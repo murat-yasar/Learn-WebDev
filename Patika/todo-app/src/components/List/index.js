@@ -2,30 +2,26 @@ import styles from './styles.module.css'
 
 import React from 'react'
 
-function List() {
+function List({ todos }) {
+	console.log(todos)
   return (
-    <ul class="todo-list">
-      <li class="completed">
-				<div class="view">
-					<input class="toggle" type="checkbox" />
-					<label>Learn JavaScript</label>
-					<button class="destroy"></button>
-				</div>
-			</li>
-			<li>
-				<div class="view">
-					<input class="toggle" type="checkbox" />
-					<label>Learn React</label>
-					<button class="destroy"></button>
-				</div>
-			</li>
-			<li>
-				<div class="view">
-					<input class="toggle" type="checkbox" />
-					<label>Have a life!</label>
-					<button class="destroy"></button>
-				</div>
-			</li>
+    <ul className='todo-list'>
+			{todos.map((todo, i) => (
+				<li 
+					key={i}
+					className={(todo.isDone === true) && 'completed'} 
+				>
+					<div className='view'>
+						<input 
+							type='checkbox' 
+							className='toggle' 
+							checked={todo.isDone}
+						/>
+						<span>{todo.task}</span>
+						<button className='destroy'></button>
+					</div>
+				</li>
+      ))}
 		</ul>
   )
 }

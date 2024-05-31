@@ -1,8 +1,12 @@
+import styles from './styles.module.css'
+
 import React from 'react'
 
 function Header() {
   return (
-    <h1>todos</h1>
+    <header>
+      <h1>todos</h1>
+    </header>
   )
 }
 

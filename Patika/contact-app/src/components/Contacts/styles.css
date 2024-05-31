@@ -1,0 +1,50 @@
+.app-header {
+  text-align: center;
+}
+
+#container {
+  width: 400px;
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+ul,li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list {
+  margin: 12px 0;
+}
+
+.contact-list > li {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ADD8E6; /* #ADD8E6; #E0FFFF; #E6E6FA; #B0E0E6; */
+}
+
+.item-number {
+  text-align: right;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.btn-div > button {
+  font-size: large;
+  padding: 5px;
+}

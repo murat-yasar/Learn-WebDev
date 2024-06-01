@@ -23,7 +23,7 @@ function Main() {
     <div className={styles.main}>
       <Form todos={todos} setTodos={setTodos} />
       <List todos={todos} />
-      {/* <Menu /> */}
+      <Menu todos={todos} />
     </div>
   )
 }

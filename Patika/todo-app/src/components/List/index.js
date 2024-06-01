@@ -1,18 +1,29 @@
 import React, { useState } from 'react'
-
 import styles from './styles.module.css'
 
-function List({ todos }) {
+function List({ todos, setTodos }) {
+
   return (
-    <table>
+    <ul className={styles.list}>
       {todos.map((todo, i) => (
-        <tr key={i} className={styles.row}>
-          <td><input type='checkbox' /></td>
-          <td>{todo.task}</td>
-          <td><button>x</button></td>
-        </tr>
+        <li key={i} className={styles.row}>
+          <form>
+            <input 
+              type='checkbox' 
+              checked={todo.isDone}
+            />
+            <input 
+              type='text' 
+              name='task' 
+              value={todo.task}
+              placeholder={todo.task} 
+              // onChange={onChangeInput}
+            />
+            <button>x</button>
+          </form>
+        </li>
       ))}
-    </table>
+    </ul>
   )
 }
 

@@ -7,7 +7,6 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
-      <h1>TODO-APP</h1>
       <Header />
       <Main />
       <Footer />

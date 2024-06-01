@@ -4,7 +4,6 @@ import styles from './styles.module.css'
 
 import Form from '../Form'
 import List from '../List'
-import Menu from '../Menu'
 
 function Main() {
   const [todos, setTodos] = useState([
@@ -22,8 +21,7 @@ function Main() {
   return (
     <div className={styles.main}>
       <Form todos={todos} setTodos={setTodos} />
-      <List todos={todos} />
-      {/* <Menu todos={todos} /> */}
+      <List todos={todos} setTodos={setTodos} />
     </div>
   )
 }

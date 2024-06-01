@@ -32,13 +32,21 @@ function Form({ todos, setTodos }) {
       onSubmit={onSubmit}
     >
       <input 
+        type='checkbox' 
+        className={styles.toggleAll}  
+      />
+      <label for="toggleAll" >
+        Mark all as complete
+      </label>
+      <input 
         type='text' 
         name='task' 
+        className={styles.newTodo}  
         value={form.task}
         placeholder='New task' 
         onChange={onChangeInput}
       />
-      <button>Add</button>
+      {/* <button>Add</button> */}
     </form>
   )
 }

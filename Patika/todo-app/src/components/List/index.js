@@ -6,20 +6,15 @@ function List({ todos, setTodos }) {
   return (
     <ul className={styles.list}>
       {todos.map((todo, i) => (
-        <li key={i} className={styles.row}>
-          <form>
+        <li key={i} className={todo.isDone ? 'completed' : ''} >
+          <form className={styles.view}>
             <input 
               type='checkbox' 
+              className={styles.toggle}
               checked={todo.isDone}
             />
-            <input 
-              type='text' 
-              name='task' 
-              value={todo.task}
-              placeholder={todo.task} 
-              // onChange={onChangeInput}
-            />
-            <button>x</button>
+            <label>{todo.task}</label>
+            <button className={styles.destroy}></button>
           </form>
         </li>
       ))}

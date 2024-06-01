@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import styles from './styles.module.css'
 
-import Input from '../Input'
+import Form from '../Form'
 import List from '../List'
 import Menu from '../Menu'
 
 function Main() {
+  const [todos, setTodos] = useState([
+    {task: 'learn HTML', isDone: true},
+    {task: 'learn CSS', isDone: true},
+    {task: 'learn JavaScript', isDone: true},
+    {task: 'learn React', isDone: false},
+    {task: 'learn NodeJS', isDone: false},
+  ]);
+
+  useEffect(()=>{
+    console.log(todos);
+  }, )
+
   return (
     <div className={styles.main}>
-      <Input />
-      <List />
-      <Menu />
+      <Form todos={todos} setTodos={setTodos} />
+      <List todos={todos} />
+      {/* <Menu /> */}
     </div>
   )
 }

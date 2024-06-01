@@ -10,8 +10,6 @@ function Footer() {
     year: date.getFullYear()
   }
 
-  console.log(today.year);
-
   return (
     <footer className={styles.footer}>
       <p>Developed by <a href="https://github.com/murat-yasar">Murat Yaşar</a>, {today.year}</p>

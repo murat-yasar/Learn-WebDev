@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Set initial form values
-const initFormVals = {fullName: "", phoneNumber: ""};
+const initFormVals = {fullName: '', phoneNumber: ''};
 
 function Form({ addContact, contacts }) {
   const [form, setForm] = useState(initFormVals);
@@ -11,7 +11,7 @@ function Form({ addContact, contacts }) {
     setForm(initFormVals);
   }, [contacts]);
 
-  // onChangeInput
+  // onChangeForm
   const onChangeForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -25,7 +25,7 @@ function Form({ addContact, contacts }) {
     // Add new contact to the contacts
     addContact([...contacts, form]);
 
-    // Reset form-fields after submit // Taken to the beginning of the function as useEffect
+    // Reset form-fields after submit -> moved up
     // setForm(initFormVals); 
   }
 
@@ -56,3 +56,4 @@ function Form({ addContact, contacts }) {
 }
 
 export default Form;
+

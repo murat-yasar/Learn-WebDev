@@ -9,6 +9,18 @@ header {
   height: 450px;
 }
 
+.img-container {
+  text-align: center;
+}
+
+#header-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  z-index: 1;
+}
+
 /* Style your navigation in an attractive fashion – use at least three CSS properties */
 nav {
   display: inline-block;
@@ -20,7 +32,7 @@ nav {
   background: url(/images/sky.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 350px;
+  height: 450px;
 }
 
 /* Apply the grid property to at least one parent element. Use at least two columns, but feel free to use more! */
@@ -33,7 +45,8 @@ nav {
 
 .list-item {
   position: relative;
-  top: 260px
+  z-index: 10;
+  top: -40px;
 }
 
 .link {
@@ -61,7 +74,7 @@ header img {
 
 h1 {
   position: relative;
-  top: 20px;
+  top: -40px;
   font-family: "Times New Roman", Times, serif;
   font-style: oblique;
   color: #003399;

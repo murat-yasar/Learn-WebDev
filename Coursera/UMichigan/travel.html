@@ -9,10 +9,13 @@
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 
-<body>
+<body onload="pickImage('travel')">
   <a id="skip" href="#main">Skip to Main Content</a>
   <header>
     <div class="grid-container">
+      <div class="img-container">
+        <img id="header-img" src="" width="auto" height="300" alt="">
+      </div>
       <nav class="grid-item">
         <ul class="list-container">
           <li class="link list-item"><a href="index.html">Home</a></li>
@@ -20,8 +23,8 @@
           <li class="link list-item"><a href="travel.html">Travel Harder</a></li>
         </ul>
       </nav>
+      <h1>Travel Harder</h1>
     </div>
-    <h1>Travel Harder</h1>
   </header>
   
   <main id="main">
@@ -46,4 +49,5 @@
         href="https://www.coursera.org/specializations/web-design"> Web Design for Everybody</a> Specialization offered by University of Michigan.</p>
   </footer>
 </body>
+<script src="js/script.js"></script>
 </html>

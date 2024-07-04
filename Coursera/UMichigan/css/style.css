@@ -1,0 +1,123 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 120%;
+  background-color: #fdf5e6;
+}
+
+header {
+  background-color: #c0c0c0;
+  height: 450px;
+}
+
+/* Style your navigation in an attractive fashion – use at least three CSS properties */
+nav {
+  display: inline-block;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.grid-container {
+  background: url(/images/sky.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 350px;
+}
+
+/* Apply the grid property to at least one parent element. Use at least two columns, but feel free to use more! */
+.list-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  justify-content: space-around;
+}
+
+.list-item {
+  position: relative;
+  top: 260px
+}
+
+.link {
+  display: inline-block;
+  list-style-type: none;
+}
+
+li>a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #787878;
+  border: 1px solid #000000;
+  padding: 2px 5px;
+}
+
+li>a:hover {
+  background-color: #ffa500;
+}
+
+header img {
+  width: 80%;
+  position: relative;
+  top: 20px;
+}
+
+h1 {
+  position: relative;
+  top: 20px;
+  font-family: "Times New Roman", Times, serif;
+  font-style: oblique;
+  color: #003399;
+  text-align: center;
+}
+
+/* Apply the flex property to at least one parent element. The navigation bar is one place to use flex. You can also use it on images if you would like. */
+.flex-container {
+  margin: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Style all images using the box model. At a minimum use border, padding, and border-radius.*/
+.flex-item {
+  margin-top: 20px;
+  flex-basis: 30%;
+  padding: 3px;
+  opacity: 0.5;
+}
+
+/* Implement the nth-child selector. */
+.flex-item:nth-child(odd) {
+  border: 3px solid #0000ff;
+}
+
+.flex-item:nth-child(even) {
+  border: 3px solid #ff0000;
+}
+
+/* Update at least one element using the hover pseudo-class. Make sure that the hover property does something interesting. I encourage you to do an internet search on some common transitions and try those. */
+.flex-item:hover {
+  opacity: 1;
+  border-radius: 5%;
+}
+
+/* Use the position property and the focus pseudo-class to style your "Skip to Main Content" link.  It should only be visible when the link is in focus. */
+#skip {
+  z-index: 10;
+  visibility: hidden;
+  background-color: #ffff00;
+  font-size: 120%;
+}
+
+#skip:focus {
+  position: sticky;
+  visibility: visible;
+}
+
+p {
+  line-height: 150%;
+  padding: 0px 10px;
+  text-align: justify;
+}
+
+footer {
+  background-color: #bfbfbf;
+}

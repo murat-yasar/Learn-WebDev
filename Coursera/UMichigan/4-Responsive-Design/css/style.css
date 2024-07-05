@@ -1,3 +1,63 @@
-h1 {
+h1, h2 {
   text-align: center;
+}
+
+body {
+  width: 95%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    background-color: red;
+  }
+  .col {
+    width: 90%;
+    display: block;
+    margin-left: 2%;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  body {
+    background-color: blue;
+  }
+  .col {
+    width: 45%;
+    display: inline-block;
+    margin-left: 2%;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  body {
+    background-color: green;
+  }
+  .col {
+    width: 30%;
+    display: inline-block;
+    margin-left: 2%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    background-color: yellow;
+  }
+  .col {
+    width: 20%;
+    display: inline-block;
+    margin-left: 2%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    background-color: pink;
+  }
+  .col {
+    width: 18%;
+    display: inline-block;
+    margin-left: 1%;
+  }
 }

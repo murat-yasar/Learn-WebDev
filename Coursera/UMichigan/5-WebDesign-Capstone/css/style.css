@@ -1,3 +1,114 @@
+/* Light-Mode Settings */
+:root {
+  --background-light: #dedede;
+  --text-light: #333;
+  --background-dark: #333;
+  --text-dark: #dedede;
+}
+
+/* Default Scroll Behavior */
+html{
+  scroll-behavior: smooth;
+}
+
+/* Light-Mode body */
+body {
+  background-color: var(--background-light);
+  color: var(--text-light);
+  transition: background-color 0.3s, color 0.3s;
+  padding: 5px;
+  margin: 15px;
+  font-size: 25px;
+  font-family:Arial, sans-serif;
+}
+
 h1 {
   text-align: center;
+  font-family:Arial, sans-serif;
+  font-size: 1.95em;
+}
+
+h2{
+  text-align:center;
+}
+
+li{
+  margin-top: 20px;
+}
+
+img{
+  border: 5px solid blue;
+  border-radius: 35px;
+  width: 100%;
+}
+
+.label{
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+figcaption {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+}
+
+/* Medium Screen */
+@media screen and (min-width: 772px){
+  .grid {
+    grid-template-columns: auto auto;
+  }
+  .grid img {
+    border-radius: 50%;
+  }
+  .grid figure:last-child {
+    grid-column: 1 / span 2;
+  } 
+}
+
+/* Large Screen */
+@media screen and (min-width: 992px){
+  .grid img {
+    border-radius: 0;
+  }
+  /** NOTE: last figures double/size remains, since it's not mentioned!  */
+  .grid figure:nth-child(3n) {
+    grid-column: 1 / span 2;
+  } 
+}
+
+/* Scroll-Behavior */
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark-Mode Settings */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-light: #333;
+    --text-light: #dedede;
+    --background-dark: #1a1a1a;
+    --caption-color-dark: #ffd700;
+    --border-color-dark: #000000;
+    --text-dark: #fff;
+  }
+  body {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+  }
+  img {
+    border-color: var(--border-color-dark);
+  }
+  .grid figcaption {
+    color: var(--caption-color-dark);
+  }
+  a {
+    color: var(--text-dark);
+  }
 }

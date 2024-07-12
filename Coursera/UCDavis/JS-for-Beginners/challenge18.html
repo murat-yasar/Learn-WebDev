@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript - UCDavis</title>
+  <style>
+    .border {
+      border: 2px solid black;
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="border">
+    <p>Today's Date</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nostrum quos illum, expedita perferendis quod magnam laudantium deserunt quia temporibus doloribus voluptates facere ratione cum rerum error ex! Deleniti, aperiam?</p>
+    <blockquote cite="A. A. Milne">
+      You're braver than you believe, and stronger than you seem, and smarter than you think.
+    </blockquote>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nostrum quos illum, expedita perferendis quod magnam laudantium deserunt quia temporibus doloribus voluptates facere ratione cum rerum error ex! Deleniti, aperiam?</p>
+    <p id="copyright">copyright info</p>
+  </div>
+
+  <script>
+    let parags = document.querySelectorAll('p');
+    for (let parag of parags){
+      parag.style.color = 'green';
+    }
+  </script>
+</body>
+</html>

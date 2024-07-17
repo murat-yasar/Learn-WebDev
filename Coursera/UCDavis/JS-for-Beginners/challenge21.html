@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript - UCDavis</title>
+  <style>
+    .border {
+      border: 2px solid black;
+      width: 500px;
+    }
+    .blue {color: blue;}
+  </style>
+</head>
+<body>
+  <div>
+    <div class="first">
+      <h2>Article Title</h2>
+      <p id="date">Today's Date</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing <a href="https://en.wikipedia.org/wiki/Llama">elit</a>. Aspernatur voluptatum ducimus, nostrum  <a href="#">consequatur</a> distinctio aperiam repellendus repellat accusamus molestias dolorum, rerum perferendis magni <a href="">minus</a> reprehenderit officia nulla velit necessitatibus? Enim?</p>
+    </div>
+  </div>
+
+  <script>
+    let links = document.querySelectorAll('a')
+    links.forEach( link => {
+      link.getAttribute('href') === 'https://en.wikipedia.org/wiki/Llama' ? link.innerHTML = 'LLAMAS ARE COOL!' : null;
+    });
+  </script>
+</body>
+</html>

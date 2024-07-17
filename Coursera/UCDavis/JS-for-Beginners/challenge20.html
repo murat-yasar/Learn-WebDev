@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript - UCDavis</title>
+  <style>
+    .border {
+      border: 2px solid black;
+      width: 500px;
+    }
+    .blue {color: blue;}
+  </style>
+</head>
+<body>
+  <div>
+    <div class="first">
+      <h2>Article Title</h2>
+      <p id="date">Today's Date</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptatum ducimus, nostrum consequatur distinctio aperiam repellendus repellat accusamus molestias dolorum, rerum perferendis magni minus reprehenderit officia nulla velit necessitatibus? Enim?</p>
+      <blockquote cite="A. A. Milne">
+        You're braver than you believe, and stronger than you seem, and smarter than you think.
+      </blockquote>
+      <br>
+      <img src="" alt=""><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptatum ducimus, nostrum consequatur distinctio aperiam repellendus repellat accusamus molestias dolorum, rerum perferendis magni minus reprehenderit officia nulla velit necessitatibus? Enim?</span>
+    </div>
+    <div class="second">
+      <h2>Article Title</h2>
+      <p id="date">Today's Date</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptatum ducimus, nostrum consequatur distinctio aperiam repellendus repellat accusamus molestias dolorum, rerum perferendis magni minus reprehenderit officia nulla velit necessitatibus? Enim?</p>
+      <blockquote cite="A. A. Milne">
+        You're braver than you believe, and stronger than you seem, and smarter than you think.
+      </blockquote>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('img').setAttribute('src', 'http://meadpoint.net/images/xmasajax.jpg');
+    let ps = document.querySelectorAll('.second p').forEach(p=>p.className = 'blue');
+    // for(let p of ps){p.className = 'blue';}
+  </script>
+</body>
+</html>

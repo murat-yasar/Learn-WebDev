@@ -9,6 +9,19 @@ class Employee
    public string $position;
 
    /* METHODS */
+   // Constructer
+   public function __construct(string $position = 'employee')
+   {
+      echo "<br> Employee class constructed!<br>";
+      $this->position = $position;
+   }
+
+   // Destructer
+   public function __destruct()
+   {
+      echo "<br> Employee class destructed!<br>";
+   }
+
    // Getters
    public function getFirstName():string 
    {

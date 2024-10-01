@@ -1,4 +1,4 @@
-<?php include 'includes/User.php'; ?>
+<?php include 'includes/autoloader.inc.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

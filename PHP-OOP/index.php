@@ -1,4 +1,7 @@
-<?php include 'includes/autoloader.inc.php'; ?>
+<?php 
+   declare(strict_types=1);
+   include 'includes/autoloader.inc.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +34,11 @@
       User::setDrivingAge(16);
       echo " --> ";
       echo User::$drivingAge;
+
+      echo "<br><br>";
+
+      $user3 = new User(2, 1982);
+      echo $user3->getName();
    ?>
 </body>
 </html>

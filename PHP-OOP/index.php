@@ -9,7 +9,9 @@
 <body>
    <h1>I Learn Object-Oriented PHP</h1>
    <?php
-      
+      $user1 = new User;
+      echo $user1->name;
+      echo $user1->year;
    ?>
 </body>
 </html>

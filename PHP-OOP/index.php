@@ -1,4 +1,5 @@
 <?php include 'includes/User.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,22 @@
 <body>
    <h1>I Learn Object-Oriented PHP</h1>
    <?php
-      $user1 = new User;
-      echo $user1->name;
-      echo $user1->year;
+      $user1 = new User("Murat Yaşar", 1982);
+      echo $user1->getName();
+      echo $user1->getYear();
+      echo "<br><br>";
+
+      $user2 = new User("Ihsan Melh", 20018);
+      echo $user2->getName();
+      echo $user2->getYear();
+      echo "<br><br>";
+
+      echo $user2->setName("Ihsan Melih");
+      echo $user2->setYear(2008);
+      echo $user2->getName();
+      echo $user2->getYear();
+
+      echo "<br><br>";
    ?>
 </body>
 </html>

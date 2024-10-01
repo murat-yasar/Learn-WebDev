@@ -18,7 +18,7 @@
       $user2 = new User("Ihsan Melh", 20018);
       echo $user2->getName();
       echo $user2->getYear();
-      echo "<br><br>";
+      echo " --> ";
 
       echo $user2->setName("Ihsan Melih");
       echo $user2->setYear(2008);
@@ -26,6 +26,11 @@
       echo $user2->getYear();
 
       echo "<br><br>";
+
+      echo User::$drivingAge;
+      User::setDrivingAge(16);
+      echo " --> ";
+      echo User::$drivingAge;
    ?>
 </body>
 </html>

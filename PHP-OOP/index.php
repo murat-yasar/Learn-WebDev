@@ -1,4 +1,4 @@
-
+<?php include 'includes/User.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

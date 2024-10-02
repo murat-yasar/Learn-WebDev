@@ -37,7 +37,8 @@
 
       echo "<br><br>";
 
-      $user3 = new User(2, 1982);
+      $user3 = new User("Orhan Mete", 2016);
+      // $user3->setName(2); //! TYPE_ERROR!!!
       echo $user3->getName();
    ?>
 </body>

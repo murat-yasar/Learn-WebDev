@@ -14,7 +14,7 @@
    <h1>MY/Calc</h1>
    <form action="includes/calculator.inc.php" method="post">
       <input type="number" name="num1" placeholder="First number">
-      <select name="operation" id="">
+      <select name="operation" >
          <option value="add">Add</option>
          <option value="sub">Subtract</option>
          <option value="mult">Multiply</option>

@@ -8,10 +8,10 @@ class Calc {
    public function __construct(int $num1, int $num2, string $opr){
       $this->num1 = $num1;
       $this->num2 = $num2;
-      $this->opr = $opr;
+      $this->operator = $opr;
    }
 
-   public function calculate() : int {
+   public function calculate(){
       switch ($this->operator) {
          case 'add':
             return $this->num1 + $this->num2;

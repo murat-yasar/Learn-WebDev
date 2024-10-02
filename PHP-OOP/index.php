@@ -11,35 +11,17 @@
    <title>Learn PHP (OOP)</title>
 </head>
 <body>
-   <h1>I Learn Object-Oriented PHP</h1>
-   <?php
-      $user1 = new User("Murat Yaşar", 1982);
-      echo $user1->getName();
-      echo $user1->getYear();
-      echo "<br><br>";
-
-      $user2 = new User("Ihsan Melh", 20018);
-      echo $user2->getName();
-      echo $user2->getYear();
-      echo " --> ";
-
-      echo $user2->setName("Ihsan Melih");
-      echo $user2->setYear(2008);
-      echo $user2->getName();
-      echo $user2->getYear();
-
-      echo "<br><br>";
-
-      echo User::$drivingAge;
-      User::setDrivingAge(16);
-      echo " --> ";
-      echo User::$drivingAge;
-
-      echo "<br><br>";
-
-      $user3 = new User("Orhan Mete", 2016);
-      // $user3->setName(2); //! TYPE_ERROR!!!
-      echo $user3->getName();
-   ?>
+   <h1>MY/Calc</h1>
+   <form action="includes/calculator.inc.php" method="post">
+      <input type="number" name="num1" placeholder="First number">
+      <select name="operation" id="">
+         <option value="add">Add</option>
+         <option value="sub">Subtract</option>
+         <option value="mult">Multiply</option>
+         <option value="div">Divide</option>
+      </select>
+      <input type="number" name="num2" placeholder="Second number">
+      <button type="submit" name="submit">Calculate</button>
+   </form>
 </body>
 </html>

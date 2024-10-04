@@ -17,7 +17,9 @@
    <!-- <hr> -->
    <?php // include 'interface.php'; ?>
    <!-- <hr> -->
-   <?php include 'abstract.php'; ?><hr>
+   <?php // include 'abstract.php'; ?>
+   <!-- <hr> -->
+   <?php include 'anonymus.php'; ?>
 
 </body>
 </html>

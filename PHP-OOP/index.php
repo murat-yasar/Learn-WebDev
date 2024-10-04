@@ -11,10 +11,13 @@
    <title>Learn PHP (OOP)</title>
 </head>
 <body>
-   <?php include 'objects.php'; ?><hr>
-   <?php include 'calculator.php'; ?><hr>
-   <?php include 'Interface.php'; ?><hr>
-   <?php include 'Abstract.php'; ?><hr>
+   <?php // include 'objects.php'; ?>
+   <!-- <hr> -->
+   <?php // include 'calculator.php'; ?>
+   <!-- <hr> -->
+   <?php // include 'interface.php'; ?>
+   <!-- <hr> -->
+   <?php include 'abstract.php'; ?><hr>
 
 </body>
 </html>

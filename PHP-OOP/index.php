@@ -12,14 +12,11 @@
 </head>
 <body>
    <?php // include 'objects.php'; ?>
-   <!-- <hr> -->
    <?php // include 'calculator.php'; ?>
-   <!-- <hr> -->
    <?php // include 'interface.php'; ?>
-   <!-- <hr> -->
    <?php // include 'abstract.php'; ?>
-   <!-- <hr> -->
-   <?php include 'anonymus.php'; ?>
+   <?php // include 'anonymus.php'; ?>
+   <?php include 'pdo.php'; ?>
 
 </body>
 </html>

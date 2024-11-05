@@ -9,28 +9,30 @@
    <?php include 'list.php'; ?>
    
    <h1>Add a New User</h1>
-   <form method="post" action="add.php">
+   <form method="post" action="actions.php">
       <table>
-         <tr>
-            <td>Name: </td>
-            <td><input type="text" name="user_name"></td>
-         </tr>
-         <tr>
-            <td>E-mail: </td>
-            <td><input type="email" name="user_email"></td>
-         </tr>
-         <tr>
-            <td>Password: </td>
-            <td><input type="password" name="user_password1"></td>
-         </tr>
-         <tr>
-            <td>Repeat Password: </td>
-            <td><input type="password" name="user_password2"></td>
-         </tr>
-         <tr>
-            <td><input type="submit" value="Add"></td>
-            <td></td>
-         </tr>
+         <tbody>
+            <tr>
+               <td>Name: </td>
+               <td><input type="text" name="user_name"></td>
+            </tr>
+            <tr>
+               <td>E-mail: </td>
+               <td><input type="email" name="user_email"></td>
+            </tr>
+            <tr>
+               <td>Password: </td>
+               <td><input type="password" name="user_password1"></td>
+            </tr>
+            <tr>
+               <td>Repeat Password: </td>
+               <td><input type="password" name="user_password2"></td>
+            </tr>
+            <tr>
+               <td><input type="submit" name="add" value="Add"></td>
+               <td></td>
+            </tr>
+         </tbody>
       </table>
    </form>
 </body>

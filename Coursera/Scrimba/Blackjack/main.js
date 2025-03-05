@@ -12,17 +12,41 @@ let cards = [];
 let sum = 0;
 
 // Functions
-let getRandomCard = () =>  Math.floor(Math.random() * (11 - 2 + 1)) + 2;
+let getRandomCard = () =>  {
+   let card = Math.floor(Math.random() * 13) + 1;
 
-let buildBoard = () => {
+   switch(card) {
+      case 1:  return "A";
+      case 11: return "J";
+      case 12: return "Q";
+      case 13: return "K";
+      default: return card;
+   }
+}
+
+let calculateSum = () => {
+   let sum = 0;
+   cards.forEach((card) => {
+      if (card === "A") {
+         sum += 11;
+      } else if (card < 10) {
+         sum += card;
+      } else {
+         sum += 10;
+      }
+   });
+   return sum;
+}
+
+let initBoard = () => {
    cards = [];
    cards.push(getRandomCard());
    cards.push(getRandomCard());
-   sum = cards.reduce((a, b) => a + b, 0);
+   sum = calculateSum();
 }
 
 function startGame() {
-   buildBoard();
+   initBoard();
    renderGame();
 }
 
@@ -46,6 +70,6 @@ function renderGame() {
 
 let newCard = () => {
    cards.push(getRandomCard());
-   sum += cards[cards.length - 1];
+   sum = calculateSum();
    renderGame();
 }

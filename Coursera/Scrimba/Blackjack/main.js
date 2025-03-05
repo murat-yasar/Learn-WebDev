@@ -1,8 +1,8 @@
 // Selectors
-let messageEl = document.querySelector("#messageEl");
-let cardsEl = document.querySelector("#cardsEl");
-let sumEl = document.querySelector("#sumEl");
-let startButton = document.querySelector("#startButton");
+let messageEl = document.querySelector("#message-el");
+let cardsEl = document.querySelector("#cards-el");
+let sumEl = document.querySelector("#sum-el");
+let startButton = document.querySelector("#btn-start");
 
 // Variables
 let hasBlackJack = false;

@@ -4,17 +4,22 @@ const saveBtn = document.querySelector("#btn-save");
 const listField = document.querySelector("#list-el");
 
 // Variables
-let linkList = [];
+let listItems = [];
 
 // Functions
 saveBtn.addEventListener("click", ()=>{
-   linkList.push(inputField.value);
-   listField.textContent = "";
+   links.push(inputField.value);
+   inputField.value = "";
+   itemList = "";
    
-   linkList.forEach(el => {
-      listField.innerHTML += `<li>${el}</li>`;
+   links.forEach(el => {
+      // Alternative Solution
+      // const liEl = document.createElement("li");
+      // liEl.textContent = el;
+      // listField.append(liEl);
+      itemList += `<li>${el}</li>`;
    });
 
-   inputField.value = "";
+   listField.innerHTML = itemList;
 });
 

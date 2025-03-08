@@ -4,7 +4,7 @@ const saveBtn = document.querySelector("#btn-save");
 const listField = document.querySelector("#list-el");
 
 // Variables
-let listItems = [];
+let links = [];
 
 // Functions
 saveBtn.addEventListener("click", ()=>{

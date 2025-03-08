@@ -8,14 +8,19 @@
       <title>Save-Link Chrome Extension</title>
    </head>
    <body>
-      <div class="container">
-         <header>
+      <header class="container">
             <h1 class="my-2">Save-Link</h1>
-         </header>
-         <input type="text" id="input-el" class="w-100 p-3">
-         <button type="button" id="btn-input" class="btn btn-primary my-3 p-3 fw-bold">SAVE</button>
-      </div>
+      </header>
 
+      <main class="container">
+            <input id="input-el" type="text" class="w-100 p-3" >
+            <button id="btn-save" class="btn btn-primary my-3 p-3 fw-bold">SAVE</button>
+            <ul id="list-el"></ul>
+      </main>
+
+      <footer class="container bg-dark m-5 p-3 text-center">
+         <span class="text-light align-middle">by Murat Yaşar, 2025</span>
+      </footer>
 
       <script src='script.js'></script>
    </body>

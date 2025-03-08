@@ -7,19 +7,22 @@ const listField = document.querySelector("#list-el");
 let links = [];
 
 // Functions
-saveBtn.addEventListener("click", ()=>{
-   links.push(inputField.value);
+const renderList = () => {
    inputField.value = "";
    itemList = "";
    
    links.forEach(el => {
+      itemList += `<li><a href="${el}" target="_blank">${el}</a></li>`;
       // Alternative Solution
       // const liEl = document.createElement("li");
       // liEl.textContent = el;
       // listField.append(liEl);
-      itemList += `<li>${el}</li>`;
    });
-
    listField.innerHTML = itemList;
+}
+
+saveBtn.addEventListener("click", ()=>{
+   links.push(inputField.value);
+   renderList();
 });
 

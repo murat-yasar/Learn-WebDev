@@ -6,7 +6,8 @@ const listField = document.querySelector("#list-el");
 
 
 //* Variables
-let links = [];
+const storageKey = "favLinks";
+let arr = [];
 
 
 //* Events
@@ -21,60 +22,60 @@ inputField.addEventListener("keypress", ()=> {
 // Save by clicking SAVE button
 saveBtn.addEventListener("click", ()=>{
    if (inputField.value) {
-      getData();
-      storeData();
-      renderList();
+      getData(storageKey);
+      storeData(storageKey);
+      renderList(arr);
    }
 });
 
 // Clear localStorage by clicking DELETE button
 delBtn.addEventListener("click", ()=>{
-   clearData();
-   renderList();
+   clearData(storageKey);
+   renderList(arr);
 });
 
 
 //* Functions
 // Run application
 const start = () => {
-   getData();
-   renderList();
+   getData(storageKey);
+   renderList(arr);
 }
 
 // Call data from localStorage
-const getData = () => {
-   if (JSON.parse(localStorage.getItem("favLinks"))) {
-      links = JSON.parse(localStorage.getItem("favLinks"));
-      renderList();
+const getData = (storageKey) => {
+   if (JSON.parse(localStorage.getItem(storageKey))) {
+      arr = JSON.parse(localStorage.getItem(storageKey));
+      renderList(arr);
    }
 }
 
 // Store data in localStorage
-const storeData = () => {
-   links.push(inputField.value);
+const storeData = (storageKey) => {
+   arr.push(inputField.value);
    inputField.value = "";
 
-   localStorage.setItem("favLinks", JSON.stringify(links));
+   localStorage.setItem(storageKey, JSON.stringify(arr));
 }
 
 // Empty localStorage
-const clearData = () => {
-   links = [];
-   localStorage.clear("favLinks");
+const clearData = (storageKey) => {
+   arr = [];
+   localStorage.clear(storageKey);
 }
 
-// Print data on browser
-const renderList = () => {
-   let itemList = "";
+// Get an array and print them as a list on browser
+const renderList = (arr) => {
+   let items = "";
 
-   links.forEach(el => {
-      itemList += `<li><a href="${el}" target="_blank">${el}</a></li>`;
+   arr.forEach(el => {
+      items += `<li><a href="${el}" target="_blank">${el}</a></li>`;
       //** Alternative Solution
       // const liEl = document.createElement("li");
       // liEl.textContent = el;
       // listField.append(liEl); 
    });
-   listField.innerHTML = itemList;
+   listField.innerHTML = items;
 }
 
 start();

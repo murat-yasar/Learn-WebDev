@@ -20,10 +20,7 @@ inputField.addEventListener("keypress", ()=> {
 // Save by clicking SAVE button
 saveBtn.addEventListener("click", ()=>{
    if (inputField.value) {
-      // Reset input-field after saving
-      links.push(inputField.value);
-      inputField.value = "";
-
+      getData();
       storeData();
       renderList();
    }
@@ -31,18 +28,32 @@ saveBtn.addEventListener("click", ()=>{
 
 
 // Functions
+const start = () => {
+   getData();
+   renderList();
+}
+
+// Call data from localStorage
+const getData = () => {
+   if (JSON.parse(localStorage.getItem("favLinks"))) {
+      links = JSON.parse(localStorage.getItem("favLinks"));
+      renderList();
+   }
+}
+
 // Store data in localStorage
 const storeData = () => {
+   links.push(inputField.value);
+   inputField.value = "";
+
    localStorage.setItem("favLinks", JSON.stringify(links));
-   console.log(localStorage.getItem("favLinks"));
+   // console.log(localStorage.getItem("favLinks"));
 }
 
 // Print data on browser
 const renderList = () => {
    let itemList = "";
 
-   links = JSON.parse(localStorage.getItem("favLinks"));
-   
    links.forEach(el => {
       itemList += `<li><a href="${el}" target="_blank">${el}</a></li>`;
       //** Alternative Solution
@@ -53,5 +64,4 @@ const renderList = () => {
    listField.innerHTML = itemList;
 }
 
-
-
+start();

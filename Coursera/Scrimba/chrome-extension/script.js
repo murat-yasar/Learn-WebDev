@@ -1,6 +1,7 @@
 //* Elements
 const inputField = document.querySelector("#input-el");
-const saveBtn = document.querySelector("#btn-save");
+const saveInput = document.querySelector("#btn-save-input");
+const saveLink = document.querySelector("#btn-save-link");
 const delBtn = document.querySelector("#btn-del");
 const listField = document.querySelector("#list-el");
 
@@ -15,18 +16,28 @@ let arr = [];
 inputField.addEventListener("keypress", ()=> {
    if (event.key === "Enter") {
       event.preventDefault();
-      document.querySelector("#btn-save").click();
+      document.querySelector("#btn-save-input").click();
    }
 });
 
-// Save by clicking SAVE button
-saveBtn.addEventListener("click", ()=>{
+// Save input by clicking SAVE-INPUT button
+saveInput.addEventListener("click", ()=>{
    if (inputField.value) {
       getData(storageKey);
       storeData(storageKey);
       renderList(arr);
    }
 });
+
+// Save link by clicking SAVE-LINK button
+// saveLink.addEventListener("click", ()=>{
+//    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+//       arr.push(tabs[0].url);
+//       getData(storageKey);
+//       storeData(storageKey);
+//       renderList(arr);
+//   });
+// });
 
 // Clear localStorage by clicking DELETE button
 delBtn.addEventListener("click", ()=>{

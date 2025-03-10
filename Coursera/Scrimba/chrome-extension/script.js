@@ -1,6 +1,7 @@
 //* Elements
 const inputField = document.querySelector("#input-el");
 const saveBtn = document.querySelector("#btn-save");
+const delBtn = document.querySelector("#btn-del");
 const listField = document.querySelector("#list-el");
 
 
@@ -26,8 +27,15 @@ saveBtn.addEventListener("click", ()=>{
    }
 });
 
+// Clear localStorage by clicking DELETE button
+delBtn.addEventListener("click", ()=>{
+   clearData();
+   renderList();
+});
 
-// Functions
+
+//* Functions
+// Run application
 const start = () => {
    getData();
    renderList();
@@ -47,7 +55,12 @@ const storeData = () => {
    inputField.value = "";
 
    localStorage.setItem("favLinks", JSON.stringify(links));
-   // console.log(localStorage.getItem("favLinks"));
+}
+
+// Empty localStorage
+const clearData = () => {
+   links = [];
+   localStorage.clear("favLinks");
 }
 
 // Print data on browser

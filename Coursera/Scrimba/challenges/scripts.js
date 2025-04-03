@@ -75,3 +75,24 @@ function altCaps(str){
 console.log(altCaps("When you visit Portland you have to go to VooDoo Donuts"));
 
 
+
+/* toTitleCase
+Write a function that will capitalize every word in a sentence.  
+
+Example Input: "everything, everywhere, all at once"
+Example Output: "Everything, Everywhere, All At Once"
+*/
+
+function capitalizeWord(word){
+    return word[0].toUpperCase() + word.slice(1);
+}
+
+function toTitleCase(str){
+    const sentenceArr = str.split(' ');
+    const capArr = sentenceArr.map(word => capitalizeWord(word));
+    return capArr.join(' ');
+}
+
+// Test Cases
+console.log(capitalizeWord("pumpkin"));
+console.log(toTitleCase("pumpkin pranced purposefully across the pond"));

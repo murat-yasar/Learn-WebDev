@@ -40,7 +40,6 @@ output: "shh... the kittens are sleeping"
 
 function whisper(str){
     if(str.endsWith("!")){
-        // scrimba!
         return "shh... " + str.slice(0, -1).toLowerCase();
     }
     return "shh... " + str.toLowerCase();
@@ -49,5 +48,30 @@ function whisper(str){
 // Test Cases
 console.log(whisper("PLEASE STOP SHOUTING."));
 console.log(whisper("MA'AM, this is a Wendy's!"));
+
+
+
+/* Alternating Caps 
+ Write a function that takes in a string of letters
+ and returns a sentence in which every other letter is capitalized.
+
+Example input: "I'm so happy it's Monday"
+Example output: "I'M So hApPy iT'S MoNdAy"
+*/
+
+function altCaps(str){
+    let newStr = '';
+    for(let i = 0; i < str.length; i++){
+        if(i % 2 === 0){
+            newStr += str[i].toUpperCase();
+        } else {
+            newStr += str[i]
+        }
+    }
+    return newStr;
+}
+
+// Test Case
+console.log(altCaps("When you visit Portland you have to go to VooDoo Donuts"));
 
 

@@ -291,13 +291,7 @@ reverse the strings manually.
 */ 
 
 function reverseStringsInArray(arr){
-    let outputArr = [];
-
-    arr.forEach(str => {
-        outputArr.push(reverseString(str));
-        });
-
-    return outputArr.reverse();
+    return arr.map(str => reverseString(str));
 }
 
 // Test Cases

@@ -25,12 +25,18 @@ const eggScrambleRecipe = [
 ]
 
 function removeDupesFromArray(arr){
-let filteredArr = [];
-arr.map(item => {
-if (!filteredArr.includes(item)) filteredArr.push(item);
-});
-return filteredArr;
+   const uniqueItems = {};
+
+   return arr.filter(item => {
+      if (!uniqueItems[item]){
+         uniqueItems[item] = true;
+         return true;
+      }
+      return false;
+   });
 }
 
 // Test Cases
 console.log(removeDupesFromArray(eggScrambleRecipe));
+
+

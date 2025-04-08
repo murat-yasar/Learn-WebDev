@@ -41,6 +41,7 @@ function removeDupesFromArray(arr){
 }
 
 // Test Cases
+console.log("01 - Chef Mario's Recipe Book:");
 console.log(removeDupesFromArray(eggScrambleRecipe));
 
 
@@ -74,19 +75,23 @@ const kittyPrizes = [
 
 function flatten(arr){
    // Solution.1
-   const uniqueItems = [];
-   arr.forEach(item =>{
-       if (Array.isArray(item)) {
-           item.forEach(el => {
-               if (!uniqueItems.includes(el)) uniqueItems.push(el);
-           })
-       } else {
-         if (!uniqueItems.includes(item)) uniqueItems.push(item);
-       }
-   });
-
-   return uniqueItems;
+   return arr.flat();
+   
+   // Solution.2
+   // const uniqueItems = [];
+   // arr.forEach(item =>{
+   //     if (Array.isArray(item)) {
+   //         item.forEach(el => {
+   //             if (!uniqueItems.includes(el)) uniqueItems.push(el);
+   //         })
+   //     } else {
+   //       if (!uniqueItems.includes(item)) uniqueItems.push(item);
+   //     }
+   // });
+   // return uniqueItems;
 }
 
+// Test Cases
+console.log("02 - Pumpkin's Prizes:");
 console.log(flatten(kittyPrizes));
 console.log(flatten(kittyScores));

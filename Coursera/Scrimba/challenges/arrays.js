@@ -166,3 +166,49 @@ function findTheWinner(obj){
 
 // Test Cases
 console.log(findTheWinner(gameNightFood));
+
+
+
+
+/* //* 05 - Totally Private Data Farm 
+
+Good news, renown advertising firm Evil Corp. wants to purchase our 
+private user data! 
+
+We'd never do this in real life of course, but just for practice 
+let's pretend we're unethical web hackers and transform the data 
+in the way Evil Corp. has requested. They're quite particular and
+just want an array of users with a fullname and human readable
+birthday.   
+
+Write a function that maps through the current data and returns
+a new an array of objects with only two properties: 
+fullName and birthday. Each result in your 
+array should look like this when you're done: 
+
+{
+   fullName: "Levent Busser", 
+   birthday: "Fri Aug 20 1971"
+   }
+   
+   Read about toDateString() for info on formatting a readable date. 
+*/
+
+import userData from "assets/data.js";
+
+function transformData(data){
+    let output = [];
+    
+    for (let item of data) {
+        let date = new Date(item.dob.date);
+        output.push({
+           fullName: `${item.name.first} ${item.name.last}`,
+           birthday: `${date.toDateString()}`
+       }); 
+    }
+    
+    return output;
+}
+
+// Test Cases
+console.log(transformData(userData));

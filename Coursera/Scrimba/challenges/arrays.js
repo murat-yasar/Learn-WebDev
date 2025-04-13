@@ -197,17 +197,22 @@ array should look like this when you're done:
 import userData from "assets/data.js";
 
 function transformData(data){
-    let output = [];
-    
-    for (let item of data) {
-        let date = new Date(item.dob.date);
-        output.push({
-           fullName: `${item.name.first} ${item.name.last}`,
-           birthday: `${date.toDateString()}`
-       }); 
-    }
-    
-    return output;
+//     let output = [];
+//     for (let item of data) {
+//         let date = new Date(item.dob.date);
+//         output.push({
+//            fullName: `${item.name.first} ${item.name.last}`,
+//            birthday: `${date.toDateString()}`
+//        }); 
+//     }
+//     return output;
+// }
+
+// ALTERNATIVE SOLUTION
+   return data.map(item => ({
+       fullName: `${item.name.first} ${item.name.last}`,
+       birthday: new Date(item.dob.date).toDateString()
+   }));
 }
 
 // Test Cases

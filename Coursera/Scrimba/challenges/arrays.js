@@ -8,44 +8,41 @@ and returns a new array with all the duplicates removed.
 
 Example input: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops", "🦄 unicorn", "🍭 lollipops"];
 Example output: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops"];
-*/ 
+*/
 
 const eggScrambleRecipe = [
-   "🥓 bacon",
-   "🥓 bacon", 
-   "🍳 eggs",
-   "🫑 green peppers",
-   "🧀 cheese",
-   "🌶️ hot sauce",
-   "🥓 bacon",
-   "🥦 broccoli", 
-   "🧀 cheese",
-   "🥦 broccoli", 
-   "🌶️ hot sauce"
-]
+	"🥓 bacon",
+	"🥓 bacon",
+	"🍳 eggs",
+	"🫑 green peppers",
+	"🧀 cheese",
+	"🌶️ hot sauce",
+	"🥓 bacon",
+	"🥦 broccoli",
+	"🧀 cheese",
+	"🥦 broccoli",
+	"🌶️ hot sauce",
+];
 
-function removeDupesFromArray(arr){
-   // const uniqueItems = {};
+function removeDupesFromArray(arr) {
+	// const uniqueItems = {};
 
-   // return arr.filter(item => {
-   //    if (!uniqueItems[item]){
-   //       uniqueItems[item] = true;
-   //       return true;
-   //    }
-   //    return false;
-   // });
+	// return arr.filter(item => {
+	//    if (!uniqueItems[item]){
+	//       uniqueItems[item] = true;
+	//       return true;
+	//    }
+	//    return false;
+	// });
 
-   // ALTERNATIVE SOLUTION
-   // The Set object lets you store unique values of any type, whether primitive values or object references.
-   return [...new Set(arr)];
+	// ALTERNATIVE SOLUTION
+	// The Set object lets you store unique values of any type, whether primitive values or object references.
+	return [...new Set(arr)];
 }
 
 // Test Cases
 console.log("01 - Chef Mario's Recipe Book:");
 console.log(removeDupesFromArray(eggScrambleRecipe));
-
-
-
 
 /* //* 02 - Pumpkin's Prizes
 Scrimba mascot Pumpkin has won the grand prize at an international 
@@ -63,40 +60,52 @@ Example output: [1, 4, 5, 4, 7, 6, 4, 3, 5]
 */
 
 const kittyScores = [
-   [39, 99, 76], 89, 98, [87, 56, 90], 
-   [96, 95], 40, 78, 50, [63]
+	[39, 99, 76],
+	89,
+	98,
+	[87, 56, 90],
+	[96, 95],
+	40,
+	78,
+	50,
+	[63],
 ];
 
 const kittyPrizes = [
-   ["💰", "🐟", "🐟"], "🏆", "💐", "💵", ["💵", "🏆"],
-   ["🐟","💐", "💐"], "💵", "💵", ["🐟"], "🐟"
+	["💰", "🐟", "🐟"],
+	"🏆",
+	"💐",
+	"💵",
+	["💵", "🏆"],
+	["🐟", "💐", "💐"],
+	"💵",
+	"💵",
+	["🐟"],
+	"🐟",
 ];
 
+function flatten(arr) {
+	// Solution.1
+	return arr.flat();
 
-function flatten(arr){
-   // Solution.1
-   return arr.flat();
-   
-   // Solution.2
-   // const uniqueItems = [];
-   // arr.forEach(item =>{
-   //     if (Array.isArray(item)) {
-   //         item.forEach(el => {
-   //             if (!uniqueItems.includes(el)) uniqueItems.push(el);
-   //         })
-   //     } else {
-   //       if (!uniqueItems.includes(item)) uniqueItems.push(item);
-   //     }
-   // });
-   // return uniqueItems;
+	// Solution.2
+	// const uniqueItems = [];
+	// arr.forEach(item =>{
+	//     if (Array.isArray(item)) {
+	//         item.forEach(el => {
+	//             if (!uniqueItems.includes(el)) uniqueItems.push(el);
+	//         })
+	//     } else {
+	//       if (!uniqueItems.includes(item)) uniqueItems.push(item);
+	//     }
+	// });
+	// return uniqueItems;
 }
 
 // Test Cases
 console.log("02 - Pumpkin's Prizes:");
 console.log(flatten(kittyPrizes));
 console.log(flatten(kittyScores));
-
-
 
 /* //* 03 - Count the Scrimba Students
 Alex from Scrimba wants to know how many new students have attended 
@@ -111,23 +120,21 @@ Example input: [1,2,3]
 Example output: 6
  */
 
-const studentCount = [50,53,61,67,60,70,78,80,80,81,90,110];
+const studentCount = [50, 53, 61, 67, 60, 70, 78, 80, 80, 81, 90, 110];
 
-function sumArray(arr){
-   // Solution.1
-   // return arr.reduce((acc, curr) => acc + curr, 0);
+function sumArray(arr) {
+	// Solution.1
+	// return arr.reduce((acc, curr) => acc + curr, 0);
 
-   // Solution.2
-   let total = 0;
-   arr.forEach(el => total += el);
-   return total;
+	// Solution.2
+	let total = 0;
+	arr.forEach((el) => (total += el));
+	return total;
 }
 
 // Test Cases
 console.log("03 - Count the Scrimba Students:");
 console.log(sumArray(studentCount));
-
-
 
 /* //* 04 - Pizza Night? 
 It's the weekend and you and your friends can't agree on 
@@ -141,34 +148,31 @@ how many votes it received.
 
 Example input: {"🐈 cats": 19, "🐕 dogs": 17} 
 Example output: The winner is 🐈 cats with 19 votes!
-*/ 
+*/
 
 const gameNightFood = {
-   "🍕 pizza": 3, 
-   "🌮 tacos": 10, 
-   "🥗 salads": 7,
-   "🍝 pasta": 5
-}
+	"🍕 pizza": 3,
+	"🌮 tacos": 10,
+	"🥗 salads": 7,
+	"🍝 pasta": 5,
+};
 
-function findTheWinner(obj){
-   let winKey = "";
-   let winVal = 0;
-   
-   for (const [key, val] of Object.entries(obj)){
-       if (val >= winVal) {
-           winKey = key;
-           winVal = val;
-       }
-   }
-   
-   return `The winner is ${winKey} with ${winVal} votes!`;
+function findTheWinner(obj) {
+	let winKey = "";
+	let winVal = 0;
+
+	for (const [key, val] of Object.entries(obj)) {
+		if (val >= winVal) {
+			winKey = key;
+			winVal = val;
+		}
+	}
+
+	return `The winner is ${winKey} with ${winVal} votes!`;
 }
 
 // Test Cases
 console.log(findTheWinner(gameNightFood));
-
-
-
 
 /* //* 05 - Totally Private Data Farm 
 
@@ -195,33 +199,29 @@ array should look like this when you're done:
 */
 import userData from "./assets/data-05.js";
 
-function transformData(data){
-//     let output = [];
-//     for (let item of data) {
-//         let date = new Date(item.dob.date);
-//         output.push({
-//            fullName: `${item.name.first} ${item.name.last}`,
-//            birthday: `${date.toDateString()}`
-//        }); 
-//     }
-//     return output;
-// }
+function transformData(data) {
+	//     let output = [];
+	//     for (let item of data) {
+	//         let date = new Date(item.dob.date);
+	//         output.push({
+	//            fullName: `${item.name.first} ${item.name.last}`,
+	//            birthday: `${date.toDateString()}`
+	//        });
+	//     }
+	//     return output;
+	// }
 
-// ALTERNATIVE SOLUTION
-   return data.map(item => ({
-       fullName: `${item.name.first} ${item.name.last}`,
-       birthday: new Date(item.dob.date).toDateString()
-   }));
+	// ALTERNATIVE SOLUTION
+	return data.map((item) => ({
+		fullName: `${item.name.first} ${item.name.last}`,
+		birthday: new Date(item.dob.date).toDateString(),
+	}));
 }
 
 // Test Cases
 console.log(transformData(userData));
 
-
-
-import podcasts from "./assets/data-06.js";
 /* //* 06- Find Free Podcasts 
-
 We have a list of podcasts and need the ability to filter by only
 podcasts which are free.
 
@@ -239,23 +239,22 @@ Expected output:
     {title: "Coding Corner", rating: 9, paid: false}
 ]
 */
+import podcasts from "./assets/data-06.js";
 
-function getFreePodcasts(data){
-    return data
-        .filter(item => item.paid === false)
-        .map(item => {
-            return {
-                title: item.title,
-                rating: item.rating,
-                paid: item.paid
-            }
-        });
+function getFreePodcasts(data) {
+	return data
+		.filter((item) => item.paid === false)
+		.map((item) => {
+			return {
+				title: item.title,
+				rating: item.rating,
+				paid: item.paid,
+			};
+		});
 }
 
 // Test Cases
-console.log(getFreePodcasts(podcasts))
-
-
+console.log(getFreePodcasts(podcasts));
 
 /* //* 07 - Candy Sale
    It's the day after Halloween 🎃 and all the candy is on sale!
@@ -275,19 +274,32 @@ console.log(getFreePodcasts(podcasts))
 */
 import products from "./assets/data-07.js";
 
-function getSaleItems(data){
-    return data
-            .filter(item => item.type === "sweet")
-            .map(sweet => {
-                return {
-                    item: sweet.item,
-                    price: sweet.price
-                }
-            })
-};
+function getSaleItems(data) {
+	return data
+		.filter((item) => item.type === "sweet")
+		.map((sweet) => {
+			return {
+				item: sweet.item,
+				price: sweet.price,
+			};
+		});
+}
 
 // Test Cases
 console.log(getSaleItems(products));
 
+/*  //* 08 - Shopping Cart
+Use reduce() to total the groceries. 
+Then find a method that will round the total to 2 decimal places.
 
+Example output: 73.44
+*/
+import shoppingCart from "./assets/data-08.js";
 
+function total(arr) {
+   const total = arr.reduce((acc, curr) => { return acc + curr.price}, 0);
+   return total.toFixed(2);
+}
+
+// Test Cases
+console.log(total(shoppingCart));

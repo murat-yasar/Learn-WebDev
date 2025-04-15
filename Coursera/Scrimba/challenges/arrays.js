@@ -193,8 +193,7 @@ array should look like this when you're done:
    
    Read about toDateString() for info on formatting a readable date. 
 */
-
-import userData from "assets/data.js";
+import userData from "./assets/data-05.js";
 
 function transformData(data){
 //     let output = [];
@@ -217,3 +216,43 @@ function transformData(data){
 
 // Test Cases
 console.log(transformData(userData));
+
+
+
+import podcasts from "./assets/data-06.js";
+/* //* 06- Find Free Podcasts 
+
+We have a list of podcasts and need the ability to filter by only
+podcasts which are free.
+
+Write a function that takes in the podcast data and returns an new
+array of only those podcasts which are free.
+
+Additionally, your new array should return only 
+objects containing only the podcast title, rating, and whether or 
+not it is paid. 
+
+Expected output: 
+[
+    {title: "Scrimba Podcast", rating: 10, paid: false}, 
+    {title: "Something about Witches", rating: 8, paid: false}, 
+    {title: "Coding Corner", rating: 9, paid: false}
+]
+*/
+
+function getFreePodcasts(data){
+    return data
+        .filter(item => item.paid === false)
+        .map(item => {
+            return {
+                title: item.title,
+                rating: item.rating,
+                paid: item.paid
+            }
+        });
+}
+
+// Test Cases
+console.log(getFreePodcasts(podcasts))
+
+

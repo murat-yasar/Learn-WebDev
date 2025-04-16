@@ -197,7 +197,7 @@ array should look like this when you're done:
    
    Read about toDateString() for info on formatting a readable date. 
 */
-import userData from "./assets/data-05.js";
+import userData from "../assets/data-05.js";
 
 function transformData(data) {
 	//     let output = [];
@@ -239,7 +239,7 @@ Expected output:
     {title: "Coding Corner", rating: 9, paid: false}
 ]
 */
-import podcasts from "./assets/data-06.js";
+import podcasts from "../assets/data-06.js";
 
 function getFreePodcasts(data) {
 	return data
@@ -272,7 +272,7 @@ console.log(getFreePodcasts(podcasts));
        {item: "🍬", price: 0.89}
     ]
 */
-import products from "./assets/data-07.js";
+import products from "../assets/data-07.js";
 
 function getSaleItems(data) {
 	return data
@@ -294,7 +294,7 @@ Then find a method that will round the total to 2 decimal places.
 
 Example output: 73.44
 */
-import shoppingCart from "./assets/data-08.js";
+import shoppingCart from "../assets/data-08.js";
 
 function total(arr) {
    const total = arr.reduce((acc, curr) => { return acc + curr.price}, 0);

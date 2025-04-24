@@ -99,7 +99,7 @@ console.log(toTitleCase("pumpkin pranced purposefully across the pond"));
 
 
 
-/* //* 05. Totally Not Another FizzBuzz 
+/* //* 05. Definitely Not FizzBuzz
 Scrimba CEO Per Borgen wants you to write a program to grant special bonuses to all his employees based on their employee ID numbers! 
 
 Scrimba has 100 employees and their employee ID numbers range from 1 - 100. If the employee's ID number is: 
@@ -211,7 +211,7 @@ console.log(emojifyPhrase("I :heart: my :elephant:"));
 
 
 
-/* //* 07. Anagrams
+/* //* 07. Is It an Anagram?
 Anagrams are groups of words that can be spelled with the same letters. 
 For example, the letters in "pea" can be rearrange to spell "ape", and 
 the letters in "allergy" can be rearranged to spell "gallery."
@@ -299,7 +299,7 @@ console.log(reverseStringsInArray(messages));
 
 
 
-/* //* 09. Palindrome
+/* //* 09. Palindromes
 Palindromes are words that are the same forward or backward. For example, 
 the words "noon" and "kayak" are a palindromes.
  

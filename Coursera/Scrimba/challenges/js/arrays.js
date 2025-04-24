@@ -44,6 +44,8 @@ function removeDupesFromArray(arr) {
 console.log("01 - Chef Mario's Recipe Book:");
 console.log(removeDupesFromArray(eggScrambleRecipe));
 
+
+
 /* //* 02 - Pumpkin's Prizes
 Scrimba mascot Pumpkin has won the grand prize at an international 
 cat show. Below are Pumpkin's scores from the judges, as well as all the 
@@ -107,6 +109,8 @@ console.log("02 - Pumpkin's Prizes:");
 console.log(flatten(kittyPrizes));
 console.log(flatten(kittyScores));
 
+
+
 /* //* 03 - Count the Scrimba Students
 Alex from Scrimba wants to know how many new students have attended 
 Scrimba's weekly Town Hall event this year. 
@@ -135,6 +139,8 @@ function sumArray(arr) {
 // Test Cases
 console.log("03 - Count the Scrimba Students:");
 console.log(sumArray(studentCount));
+
+
 
 /* //* 04 - Pizza Night? 
 It's the weekend and you and your friends can't agree on 
@@ -174,6 +180,8 @@ function findTheWinner(obj) {
 // Test Cases
 console.log(findTheWinner(gameNightFood));
 
+
+
 /* //* 05 - Totally Private Data Farm 
 
 Good news, renown advertising firm Evil Corp. wants to purchase our 
@@ -197,7 +205,7 @@ array should look like this when you're done:
    
    Read about toDateString() for info on formatting a readable date. 
 */
-import userData from "../assets/data-05.js";
+import userData from "../assets/data-01.js";
 
 function transformData(data) {
 	//     let output = [];
@@ -221,6 +229,8 @@ function transformData(data) {
 // Test Cases
 console.log(transformData(userData));
 
+
+
 /* //* 06- Find Free Podcasts 
 We have a list of podcasts and need the ability to filter by only
 podcasts which are free.
@@ -239,7 +249,7 @@ Expected output:
     {title: "Coding Corner", rating: 9, paid: false}
 ]
 */
-import podcasts from "../assets/data-06.js";
+import podcasts from "../assets/data-02.js";
 
 function getFreePodcasts(data) {
 	return data
@@ -255,6 +265,8 @@ function getFreePodcasts(data) {
 
 // Test Cases
 console.log(getFreePodcasts(podcasts));
+
+
 
 /* //* 07 - Candy Sale
    It's the day after Halloween 🎃 and all the candy is on sale!
@@ -272,7 +284,7 @@ console.log(getFreePodcasts(podcasts));
        {item: "🍬", price: 0.89}
     ]
 */
-import products from "../assets/data-07.js";
+import products from "../assets/data-03.js";
 
 function getSaleItems(data) {
 	return data
@@ -288,13 +300,15 @@ function getSaleItems(data) {
 // Test Cases
 console.log(getSaleItems(products));
 
+
+
 /*  //* 08 - Shopping Cart
 Use reduce() to total the groceries. 
 Then find a method that will round the total to 2 decimal places.
 
 Example output: 73.44
 */
-import shoppingCart from "../assets/data-08.js";
+import shoppingCart from "../assets/data-04.js";
 
 function total(arr) {
    const total = arr.reduce((acc, curr) => { return acc + curr.price}, 0);

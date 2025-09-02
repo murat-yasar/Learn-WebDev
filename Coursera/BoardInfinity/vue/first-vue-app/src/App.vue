@@ -1,5 +1,6 @@
 <template>
-  <Greet />
+  <Greet name="Murat" />
+  <Greet name="Memluk" />
 </template>
 
 <script>
@@ -12,9 +13,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-
-}
-</style>

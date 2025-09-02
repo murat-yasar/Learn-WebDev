@@ -16,7 +16,17 @@
   <br><hr><br>
   <!-- Slot Example -->
   <Card><h2>Card Component (Slots)</h2></Card>
-  <card><img src="../src/assets/logo.png" /></card>
+  <Card>
+    <template v-slot:header>
+      <h2>Card Header</h2>
+    </template>
+    <template v-slot:default>
+      <img src="../src/assets/logo.png" />
+    </template>
+    <template v-slot:footer>
+      <b>Card Footer</b>
+    </template>
+  </Card>
 
   <br><hr><br>
   <!-- Slot Example -->

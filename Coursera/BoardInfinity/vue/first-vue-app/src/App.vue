@@ -1,13 +1,29 @@
 <template>
-  <p>{{ greetings }} {{ name }}!</p>
-  <p v-text="question"></p>
-  <p v-html="bold"></p>
-  <p v-bind:id="'static-id'">This is a p-tag with a static id.</p>
-  <p v-bind:id="dynamicId">This is another p-tag with a dynamic id.</p>
-  <p v-bind:class="myClass">This is a p-tag with a class.</p>
-  <p v-bind:style="myStyle">This is a p-tag with a style.</p>
-
-  <p v-bind:id="dynamicId" :class="myClass" :style="myStyle">This is p-tag with combined data-binding.</p>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th><h2>Counter</h2></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><button @click="counter-=1">Decrease</button></td>
+        <td style="text-align: center;">
+          <span v-bind:style="{ fontSize: '2rem'}">{{ counter }}</span>
+        </td>
+        <td><button v-on:click="counter+=1">Increase</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="text-align: center;">
+          <button v-on:click="counter=0">Reset</button>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -16,16 +32,7 @@ export default {
   name: 'App',
   data() {
     return {
-      name: 'Murat',
-      greetings: 'Hello',
-      question: 'How are you?',
-      bold: '<b>This is an HTML tag</b>',
-      dynamicId: 'dynamic-id',
-      myClass: 'center',
-      myStyle: {
-        color: 'red',
-        backgroundColor: 'gold'
-      }
+      counter: 0,
     }
   }
 }

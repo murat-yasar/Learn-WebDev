@@ -1,6 +1,7 @@
 <template>
   <Greet name="Murat" />
   <Greet name="Memluk" />
+  <Greet :name="name" />
 </template>
 
 <script>
@@ -10,6 +11,11 @@ export default {
   name: 'App',
   components: {
     Greet
+  },
+  data() {
+    return {
+      name: 'SuperCoder'
+    }
   }
 }
 </script>

@@ -10,3 +10,6 @@ Route::get('/jobs', function () {
     return '<h1>Vacant positions</h1>';
 });
 
+Route::post('/submit', function () {
+    return 'Form submitted';
+});

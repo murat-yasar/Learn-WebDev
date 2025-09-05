@@ -8,8 +8,8 @@ Route::get('/', function () {
 
 Route::get('/jobs', function () {
     return '<h1>Vacant positions</h1>';
-});
+})->name('jobs');
 
-Route::match(['get', 'post'], '/submit', function () {
-    return 'Form submitted';
+Route::get('/posts/{id}', function (string $id) {
+    return 'Post: ' . $id;
 });

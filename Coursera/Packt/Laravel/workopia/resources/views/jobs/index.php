@@ -6,7 +6,7 @@
    <title>Available Jobs</title>
 </head>
 <body>
-   <h1>Available Jobs</h1>
+   <h1><?php echo "$title"; ?></h1>
    <ul>
       <li>Project Manager</li>
       <li>Frontend Developer</li>

@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/jobs', function () {
-    return '<h1>Vacant positions</h1>';
+    return view('jobs');
 })->name('jobs');
 
 // Route::get('/test', function (Request $request) {

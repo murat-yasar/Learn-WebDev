@@ -11,17 +11,18 @@ Route::get('/jobs', function () {
     return '<h1>Vacant positions</h1>';
 })->name('jobs');
 
-Route::get('/test', function (Request $request) {
-    return [
-        'method' => $request->method(),
-        'url' => $request->url(),
-        'fullUrl' => $request->fullUrl(),
-        'path' => $request->path(),
-        'ip' => $request->ip(),
-        'userAgent' => $request->userAgent(),
-        'header' => $request->header(),
-    ];
-});
+// Route::get('/test', function (Request $request) {
+//     return [
+//         'method' => $request->method(),
+//         'url' => $request->url(),
+//         'fullUrl' => $request->fullUrl(),
+//         'path' => $request->path(),
+//         'ip' => $request->ip(),
+//         'userAgent' => $request->userAgent(),
+//         'header' => $request->header(),
+//     ];
+// });
+
 
 //* Request Object */
 
@@ -49,35 +50,38 @@ Route::get('/test', function (Request $request) {
 //     return $request->except('age');
 // });
 
-//* Response Object */ 
 
-Route::get('/test', function () {
-    return response('Hello World!', 200);
-});
+//* Response Object */
+
+// Route::get('/test', function () {
+//     return response('Hello World!', 200);
+// });
+
 // Route::get('/test', function () {
 //     return response('<h1>Hello World!</h1>', 200)->header('Content-Type', 'text/plain');
 // });
+
 // Route::get('/test', function () {
 //     return response('<h1>Hello World!</h1>', 200)->header('Content-Type', 'html');
 // });
 
-Route::get('/notfound', function () {
-    return response('<h1>Not Found</h1>', 404);
-});
+// Route::get('/notfound', function () {
+//     return response('<h1>Not Found</h1>', 404);
+// });
 
 // Route::get('/test', function () {
 //     return response()->json(['name' => 'John Doe']);
 // });
 
-Route::get('/download', function () {
-    return response()->download(public_path('favicon.ico'));
-});
+// Route::get('/download', function () {
+//     return response()->download(public_path('favicon.ico'));
+// });
 
-Route::get('/test', function () {
-    return response()->json()->cookie('name', 'Murat Yaşar');
-});
+// Route::get('/test', function () {
+//     return response()->json()->cookie('name', 'Murat Yaşar');
+// });
 
-Route::get('/cookie', function (Request $request) {
-    $cookieValue = $request->cookie('name');
-    return response()->json(['cookie' => $cookieValue]);
-});
+// Route::get('/cookie', function (Request $request) {
+//     $cookieValue = $request->cookie('name');
+//     return response()->json(['cookie' => $cookieValue]);
+// });

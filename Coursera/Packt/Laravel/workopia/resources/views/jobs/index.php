@@ -9,7 +9,7 @@
    <h1><?php echo $title; ?></h1>
    <ul>
       <?php foreach($jobs as $job): ?>
-         <li><?php echo $job; ?></li>
+         <li><?php echo htmlspecialchars($job, ENT_QUOTES); ?></li>
       <?php endforeach; ?>
    </ul>
 </body>

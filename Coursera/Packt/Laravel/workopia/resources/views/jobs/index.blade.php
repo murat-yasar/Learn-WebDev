@@ -18,6 +18,9 @@
    @endif -->
    <ul>
       @forelse ($jobs as $job)
+      @if ($job === 'QA Tester')
+      @break
+      @endif
       <li>{{ $job }}</li>
       @empty
       <p>No available jobs!</p>

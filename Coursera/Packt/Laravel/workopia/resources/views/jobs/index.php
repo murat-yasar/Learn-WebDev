@@ -6,14 +6,11 @@
    <title>Available Jobs</title>
 </head>
 <body>
-   <h1><?php echo "$title"; ?></h1>
+   <h1><?php echo $title; ?></h1>
    <ul>
-      <li>Project Manager</li>
-      <li>Frontend Developer</li>
-      <li>Frontend Designer</li>
-      <li>Backend Developer</li>
-      <li>QA Tester</li>
-      <li>System Administrator</li>
+      <?php foreach($jobs as $job): ?>
+         <li><?php echo $job; ?></li>
+      <?php endforeach; ?>
    </ul>
 </body>
 </html>

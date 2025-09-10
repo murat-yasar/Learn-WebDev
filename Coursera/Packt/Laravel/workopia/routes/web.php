@@ -8,9 +8,20 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    return view('jobs.index', [
-        'title' => 'Software Jobs'
-    ]);
+    // return view('jobs.index', [
+    //     'title' => 'Available Jobs'
+    // ]);
+    // return view('jobs.index')->with('title', 'Available Jobs');
+    $title = "Available Jobs";
+    $jobs = [
+        'Project Manager',
+        'Frontend Developer',
+        'UI/UX Designer',
+        'Backend Developer',
+        'QA Tester',
+        'System Administrator'
+    ];
+    return view('jobs.index', compact('title', 'jobs'));
 })->name('jobs');
 
 Route::get('/jobs/create', function () {

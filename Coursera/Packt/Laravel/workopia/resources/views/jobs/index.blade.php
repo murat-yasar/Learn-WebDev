@@ -18,10 +18,13 @@
    @endif -->
    <ul>
       @forelse ($jobs as $job)
-      @if ($job === 'QA Tester')
-      @break
+      @if ($loop->first)
+      <li>First: {{ $job }}</li>
+      @elseif ($loop->last)
+      <li>Last: {{ $job }}</li>
+      @else
+      <li>{{ $loop->iteration }} - {{ $job }}</li>
       @endif
-      <li>{{ $job }}</li>
       @empty
       <p>No available jobs!</p>
       @endforelse

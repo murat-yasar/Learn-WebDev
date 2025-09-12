@@ -18,15 +18,15 @@
    @endif -->
    <ul>
       @forelse ($jobs as $job)
-      @if ($loop->first)
-      <li>First: {{ $job }}</li>
-      @elseif ($loop->last)
-      <li>Last: {{ $job }}</li>
-      @else
-      <li>{{ $loop->iteration }} - {{ $job }}</li>
-      @endif
+         @if ($loop->first)
+            <li>First: {{ $job }}</li>
+         @elseif ($loop->last)
+            <li>Last: {{ $job }}</li>
+         @else
+            <li>{{ $loop->iteration }} - {{ $job }}</li>
+         @endif
       @empty
-      <p>No available jobs!</p>
+         <p>No available jobs!</p>
       @endforelse
    </ul>
 </body>

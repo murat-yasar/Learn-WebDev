@@ -6,34 +6,59 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    public function index(){
-        $title = "Available Jobs";
-        $jobs = [
-            'Project Manager',
-            'Frontend Developer',
-            'UI/UX Designer',
-            'Backend Developer',
-            'QA Tester',
-            'System Administrator'
-        ];
-        return view('jobs.index', compact('title', 'jobs'));
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
     }
 
-    public function create(){
-        return view('jobs.create');
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
-    public function show(string $id){
-        return "Job Details: $id";
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
-    public function store(Request $request){
-        $title = $request->input('title');
-        $description = $request->input('description');
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
 
-        return "
-            <h2>$title</h2>
-            <p>$description</p>
-        ";
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

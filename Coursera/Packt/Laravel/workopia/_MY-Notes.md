@@ -8,3 +8,7 @@ php artisan serve
 php artisan make:controller ControllerName
 ```
 
+## Create a Controller with methods
+```sh
+php artisan make:controller ControllerName --resource
+```

@@ -6,7 +6,7 @@
    <title>Available Jobs</title>
 </head>
 <body>
-   <h1>{{ $title }}</h1>
+   <h1>Open Positions</h1>
    <!-- @if (!empty($jobs))
    <ul>
       @foreach ($jobs as $job)
@@ -17,7 +17,7 @@
    <p>Currently, no jobs are available!</p>
    @endif -->
    <ul>
-      @forelse ($jobs as $job)
+      <!-- @forelse ($jobs as $job)
          @if ($loop->first)
             <li>First: {{ $job }}</li>
          @elseif ($loop->last)
@@ -27,6 +27,11 @@
          @endif
       @empty
          <p>No available jobs!</p>
+      @endforelse -->
+      @forelse ($jobs as $job)
+      <li>{{ $job }}</li>
+      @empty
+      <li>No Jobs Available</li>
       @endforelse
    </ul>
 </body>

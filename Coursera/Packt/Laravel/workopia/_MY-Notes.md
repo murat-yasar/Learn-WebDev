@@ -12,3 +12,9 @@ php artisan make:controller ControllerName
 ```sh
 php artisan make:controller ControllerName --resource
 ```
+
+## Create a Component
+```sh
+php artisan make:component ComponentName
+```
+

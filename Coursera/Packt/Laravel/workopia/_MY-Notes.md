@@ -1,4 +1,4 @@
-## Start the Server
+## Start artisan Server
 ```sh
 php artisan serve
 ```
@@ -18,3 +18,7 @@ php artisan make:controller ControllerName --resource
 php artisan make:component ComponentName
 ```
 
+## Start Vite Server
+```sh
+npm run dev
+```

@@ -198,6 +198,34 @@
   .m-3 {
     margin: calc(var(--spacing) * 3);
   }
+  .m-5 {
+    margin: calc(var(--spacing) * 5);
+  }
+  .size-6 {
+    width: calc(var(--spacing) * 6);
+    height: calc(var(--spacing) * 6);
+  }
+  .list-inside {
+    list-style-position: inside;
+  }
+  .list-outside {
+    list-style-position: outside;
+  }
+  .list-decimal {
+    list-style-type: decimal;
+  }
+  .list-disc {
+    list-style-type: disc;
+  }
+  .list-none {
+    list-style-type: none;
+  }
+  .list-image-\[url\(\.\.\/src\/img\/check\.png\)\] {
+    list-style-image: url(../src/img/check.png);
+  }
+  .list-image-\[url\(\/img\/check\.png\)\] {
+    list-style-image: url(/img/check.png);
+  }
   .rounded-4xl {
     border-radius: var(--radius-4xl);
   }
@@ -433,6 +461,11 @@
   }
   .outline-red-600 {
     outline-color: var(--color-red-600);
+  }
+}
+@layer base {
+  body {
+    font-family: var(--font-manrope);
   }
 }
 @property --tw-border-style {

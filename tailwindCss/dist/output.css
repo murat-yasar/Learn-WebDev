@@ -225,6 +225,12 @@
   }
 }
 @layer utilities {
+  .absolute {
+    position: absolute;
+  }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
   .m-1 {
     margin: calc(var(--spacing) * 1);
   }
@@ -411,6 +417,46 @@
   .inline-block {
     display: inline-block;
   }
+  .size-1\/2 {
+    width: calc(1/2 * 100%);
+    height: calc(1/2 * 100%);
+  }
+  .size-24 {
+    width: calc(var(--spacing) * 24);
+    height: calc(var(--spacing) * 24);
+  }
+  .size-48 {
+    width: calc(var(--spacing) * 48);
+    height: calc(var(--spacing) * 48);
+  }
+  .size-96 {
+    width: calc(var(--spacing) * 96);
+    height: calc(var(--spacing) * 96);
+  }
+  .size-128 {
+    width: calc(var(--spacing) * 128);
+    height: calc(var(--spacing) * 128);
+  }
+  .size-256 {
+    width: calc(var(--spacing) * 256);
+    height: calc(var(--spacing) * 256);
+  }
+  .size-auto {
+    width: auto;
+    height: auto;
+  }
+  .size-fit {
+    width: fit-content;
+    height: fit-content;
+  }
+  .size-full {
+    width: 100%;
+    height: 100%;
+  }
+  .size-max {
+    width: max-content;
+    height: max-content;
+  }
   .h-1\/2 {
     height: calc(1/2 * 100%);
   }
@@ -434,6 +480,9 @@
   }
   .h-full {
     height: 100%;
+  }
+  .min-h-64 {
+    min-height: calc(var(--spacing) * 64);
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
@@ -697,6 +746,21 @@
   }
   .bg-yellow-500 {
     background-color: var(--color-yellow-500);
+  }
+  .bg-\[url\(\'\/src\/img\/slide1\.jpg\'\)\] {
+    background-image: url('/src/img/slide1.jpg');
+  }
+  .bg-\[url\(\'\/src\/img\/slide2\.jpg\'\)\] {
+    background-image: url('/src/img/slide2.jpg');
+  }
+  .bg-cover {
+    background-size: cover;
+  }
+  .bg-fixed {
+    background-attachment: fixed;
+  }
+  .bg-local {
+    background-attachment: local;
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);

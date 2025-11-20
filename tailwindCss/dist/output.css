@@ -11,6 +11,7 @@
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-orange-800: oklch(47% 0.157 37.304);
     --color-amber-500: oklch(76.9% 0.188 70.08);
     --color-amber-600: oklch(66.6% 0.179 58.318);
@@ -21,6 +22,7 @@
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-purple-500: oklch(62.7% 0.265 303.9);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -403,6 +405,12 @@
   .flex {
     display: flex;
   }
+  .grid {
+    display: grid;
+  }
+  .inline-block {
+    display: inline-block;
+  }
   .h-1\/2 {
     height: calc(1/2 * 100%);
   }
@@ -411,6 +419,12 @@
   }
   .h-1\/4 {
     height: calc(1/4 * 100%);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+  .h-24 {
+    height: calc(var(--spacing) * 24);
   }
   .h-48 {
     height: calc(var(--spacing) * 48);
@@ -456,6 +470,9 @@
   }
   .w-7xl {
     width: var(--container-7xl);
+  }
+  .w-12 {
+    width: calc(var(--spacing) * 12);
   }
   .w-auto {
     width: auto;
@@ -508,8 +525,20 @@
   .list-image-\[url\(\.\.\/src\/img\/check\.png\)\] {
     list-style-image: url(../src/img/check.png);
   }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
   .flex-col {
     flex-direction: column;
+  }
+  .items-center {
+    align-items: center;
   }
   .justify-around {
     justify-content: space-around;
@@ -525,6 +554,9 @@
   }
   .justify-start {
     justify-content: flex-start;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
   }
   .space-y-2 {
     :where(& > :not(:last-child)) {
@@ -651,6 +683,12 @@
   .bg-green-500 {
     background-color: var(--color-green-500);
   }
+  .bg-orange-500 {
+    background-color: var(--color-orange-500);
+  }
+  .bg-purple-500 {
+    background-color: var(--color-purple-500);
+  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
@@ -767,6 +805,9 @@
   }
   .text-start {
     text-align: start;
+  }
+  .align-middle {
+    vertical-align: middle;
   }
   .font-manrope {
     font-family: var(--font-manrope);
@@ -991,6 +1032,51 @@
   }
   .outline-red-600 {
     outline-color: var(--color-red-600);
+  }
+  .sm\:grid-cols-1 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-3 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-4 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .xl\:grid-cols-4 {
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .xl\:grid-cols-6 {
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+  .\32 xl\:grid-cols-6 {
+    @media (width >= 96rem) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
   }
 }
 @layer base {

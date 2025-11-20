@@ -538,10 +538,49 @@
       <div class="h-24 flex items-center justify-center bg-orange-500">grid</div>
       <div class="h-24 flex items-center justify-center bg-red-500">grid</div>
    </div>
-   -->
 
    <h2 class="text-3xl mt-6 text-center">Background Image</h2>
    <div class="bg-[url('/src/img/slide2.jpg')] bg-cover absolute inset-0"></div>
+   -->
+
+   <h2 class="text-3xl mt-6 text-center">Position</h2>
+   <div class="
+               relative
+               bg-yellow-500
+               w-96 h-96
+               text-center
+   ">
+      Parent Div
+      <div class="
+               absolute
+               bg-orange-500 w-32 h-32
+               flex items-center justify-center
+               top-0
+      ">Child Div top-0</div>
+
+      <div class="
+               absolute
+               bg-orange-500 w-32 h-32
+               flex items-center justify-center
+               bottom-0
+      ">Child Div bottom-0</div>
+
+      <div class="
+               absolute
+               bg-orange-500 w-32 h-32
+               flex items-center justify-center
+               top-0 right-0
+      ">Child Div top-0 right-0</div>
+
+      <div class="
+               absolute
+               bg-orange-500 w-32 h-32
+               flex items-center justify-center
+               bottom-0 right-0
+      ">Child Div bottom-0 right-0</div>
+
+   </div>
+
 
 </body>
 </html>

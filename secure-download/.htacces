@@ -1,0 +1,25 @@
+<?php exit; ?>
+# Prevent direct access to PHP files in includes
+<FilesMatch "^(config|functions)\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Prevent access to log files
+<Files ~ "\.log$">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Disable server signature
+ServerSignature Off

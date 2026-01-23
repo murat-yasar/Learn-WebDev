@@ -21,14 +21,16 @@ define('ALLOWED_LANGUAGES', ['en', 'de']);
 
 // Document configuration
 // Each document can be:
-// - 'type' => 'pdf' for downloadable PDFs in assets/pdf/
+// - 'type' => 'pdf' for downloadable PDFs
+//   - PDFs stored in assets/pdf/en/ and assets/pdf/de/
 // - 'type' => 'external' for external links
 // - 'active' => true/false to show/hide without deleting
 define('DOCUMENTS', [
     [
         'id' => 'doc1',
         'type' => 'pdf',
-        'file' => 'document1.pdf',
+        'file_en' => 'document1.pdf',  // File in assets/pdf/en/
+        'file_de' => 'document1.pdf',  // File in assets/pdf/de/
         'name_en' => 'User Manual',
         'name_de' => 'Benutzerhandbuch',
         'active' => true
@@ -36,7 +38,8 @@ define('DOCUMENTS', [
     [
         'id' => 'doc2',
         'type' => 'pdf',
-        'file' => 'document2.pdf',
+        'file_en' => 'document2.pdf',
+        'file_de' => 'document2.pdf',
         'name_en' => 'Safety Guidelines',
         'name_de' => 'Sicherheitsrichtlinien',
         'active' => true
@@ -44,7 +47,8 @@ define('DOCUMENTS', [
     [
         'id' => 'doc3',
         'type' => 'pdf',
-        'file' => 'document3.pdf',
+        'file_en' => 'document3.pdf',
+        'file_de' => 'document3.pdf',
         'name_en' => 'Technical Specifications',
         'name_de' => 'Technische Spezifikationen',
         'active' => true
@@ -52,7 +56,8 @@ define('DOCUMENTS', [
     [
         'id' => 'doc4',
         'type' => 'pdf',
-        'file' => 'document4.pdf',
+        'file_en' => 'document4.pdf',
+        'file_de' => 'document4.pdf',
         'name_en' => 'Installation Guide',
         'name_de' => 'Installationsanleitung',
         'active' => true
@@ -60,7 +65,8 @@ define('DOCUMENTS', [
     [
         'id' => 'doc5',
         'type' => 'pdf',
-        'file' => 'document5.pdf',
+        'file_en' => 'document5.pdf',
+        'file_de' => 'document5.pdf',
         'name_en' => 'Warranty Information',
         'name_de' => 'Garantieinformationen',
         'active' => true
@@ -68,15 +74,17 @@ define('DOCUMENTS', [
     [
         'id' => 'external1',
         'type' => 'external',
-        'url' => 'https://investor-relations.lufthansagroup.com/_assets/1cab50fcd71b9d0954aa17b75006183c/pm/202106/de/files.php',
-        'name_en' => 'Capital Increase 2021',
-        'name_de' => 'Kapitalerhöhung 2021',
+        'url_en' => 'https://example.com/en/support',
+        'url_de' => 'https://example.com/de/support',
+        'name_en' => 'Online Support Portal',
+        'name_de' => 'Online-Support-Portal',
         'active' => true
     ],
     [
         'id' => 'external2',
         'type' => 'external',
-        'url' => 'https://example.com/video-tutorials',
+        'url_en' => 'https://example.com/en/video-tutorials',
+        'url_de' => 'https://example.com/de/video-tutorials',
         'name_en' => 'Video Tutorials',
         'name_de' => 'Video-Anleitungen',
         'active' => true

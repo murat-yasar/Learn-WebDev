@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (requiresDisclaimer($_POST['country'])) {
             header('Location: /en/disclaimer.php');
         } else {
-            header('Location: /en/files.php');
+            header('Location: no_access.php');
         }
         exit();
     } else {

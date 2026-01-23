@@ -29,7 +29,7 @@ include __DIR__ . '/../includes/header_de.php';
                         <a href="/download.php?id=<?php echo urlencode($doc['id']); ?>&lang=de"
                            class="btn btn-download">Herunterladen</a>
                     <?php elseif ($doc['type'] === 'external'): ?>
-                        <a href="<?php echo htmlspecialchars($doc['url']); ?>"
+                        <a href="<?php echo htmlspecialchars($doc['url_de']); ?>"
                            target="_blank"
                            rel="noopener noreferrer"
                            class="btn btn-download">Link öffnen</a>

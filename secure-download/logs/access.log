@@ -1,0 +1,4 @@
+[2026-01-23 18:56:04] IP: ::1 | Action: COUNTRY_SELECTED | Details: EU | UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+[2026-01-23 18:56:07] IP: ::1 | Action: DISCLAIMER_AGREED | Details: EU | UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+[2026-01-23 18:56:07] IP: ::1 | Action: FILES_PAGE_ACCESSED | Details: EU | UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+[2026-01-23 18:56:09] IP: ::1 | Action: FILE_NOT_FOUND | Details: document1.pdf | UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36

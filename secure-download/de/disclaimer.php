@@ -40,6 +40,7 @@ $csrfToken = generateCSRFToken();
 include __DIR__ . '/../includes/header_de.php';
 ?>
 
+
 <div class="container">
     <h1>Wichtiger Haftungsausschluss</h1>
 

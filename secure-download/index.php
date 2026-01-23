@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Generate CSRF token
 $csrfToken = generateCSRFToken();
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -40,6 +40,7 @@ $csrfToken = generateCSRFToken();
 include __DIR__ . '/../includes/header_en.php';
 ?>
 
+
 <div class="container">
     <h1>Important Disclaimer</h1>
 
@@ -61,5 +62,6 @@ include __DIR__ . '/../includes/header_en.php';
         </div>
     </form>
 </div>
+
 
 <?php include __DIR__ . '/../includes/footer_en.php'; ?>

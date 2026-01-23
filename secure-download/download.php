@@ -6,14 +6,24 @@ require_once __DIR__ . '/includes/functions.php';
 startSecureSession();
 checkAccess(true);
 
-// Validate file parameter
-if (!isset($_GET['file']) || !in_array($_GET['file'], PDF_FILES, true)) {
-    logActivity('INVALID_DOWNLOAD_ATTEMPT', $_GET['file'] ?? 'none');
+// Validate document ID parameter
+if (!isset($_GET['id'])) {
+    logActivity('INVALID_DOWNLOAD_ATTEMPT', 'No ID provided');
     http_response_code(404);
-    die('File not found');
+    die('Document not found');
 }
 
-$filename = $_GET['file'];
+$docId = $_GET['id'];
+$document = getDocumentById($docId);
+
+// Check if document exists and is a PDF type
+if (!$document || $document['type'] !== 'pdf') {
+    logActivity('INVALID_DOWNLOAD_ATTEMPT', $docId);
+    http_response_code(404);
+    die('Document not found');
+}
+
+$filename = $document['file'];
 $filepath = __DIR__ . '/assets/pdf/' . $filename;
 
 // Check if file exists
@@ -24,7 +34,7 @@ if (!file_exists($filepath)) {
 }
 
 // Log download
-logActivity('FILE_DOWNLOADED', $filename);
+logActivity('FILE_DOWNLOADED', $filename . ' (' . $docId . ')');
 
 // Set headers for download
 header('Content-Type: application/pdf');

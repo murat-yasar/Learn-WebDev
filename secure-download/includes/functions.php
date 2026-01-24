@@ -67,6 +67,13 @@ if (!function_exists('requiresDisclaimer')) {
     }
 }
 
+// Check if country has no access
+if (!function_exists('hasNoAccess')) {
+    function hasNoAccess($country) {
+        return in_array($country, NO_ACCESS_COUNTRIES, true);
+    }
+}
+
 // Check if user has selected country
 if (!function_exists('hasSelectedCountry')) {
     function hasSelectedCountry() {

@@ -16,6 +16,9 @@ define('ALLOWED_COUNTRIES', ['EU', 'USA-CA', 'AU-NZ', 'Others']);
 // Countries requiring disclaimer
 define('DISCLAIMER_COUNTRIES', ['EU', 'USA-CA']);
 
+// Countries with no access
+define('NO_ACCESS_COUNTRIES', ['AU-NZ', 'Others']);
+
 // Allowed languages
 define('ALLOWED_LANGUAGES', ['en', 'de']);
 

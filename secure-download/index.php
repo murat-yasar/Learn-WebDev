@@ -20,11 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         logActivity('COUNTRY_SELECTED', $_POST['country']);
 
+        // Check if country has no access
+        if (hasNoAccess($_POST['country'])) {
+            header('Location: /no_access.php');
+            exit();
+        }
+
         // Redirect based on country
         if (requiresDisclaimer($_POST['country'])) {
             header('Location: /en/disclaimer.php');
         } else {
-            header('Location: no_access.php');
+            header('Location: /en/files.php');
         }
         exit();
     } else {

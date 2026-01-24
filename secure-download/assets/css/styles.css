@@ -292,3 +292,11 @@ select:focus {
 .error-404-actions .btn {
     min-width: 150px;
 }
+
+.file-link {
+    color: #3498db;  /* Change this to your preferred color */
+}
+
+.file-link:hover {
+    color: #2980b9;  /* Change hover color */
+}

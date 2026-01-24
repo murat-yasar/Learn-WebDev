@@ -48,19 +48,21 @@ $csrfToken = generateCSRFToken();
 // Language-specific content
 $content = [
     'en' => [
-        'title' => 'Select Your Country',
-        'description' => 'Please choose your country to continue',
-        'country_label' => 'Country:',
-        'select_option' => '-- Select Country --',
-        'button' => 'Continue',
+        'title' => 'Capital increase 2021',
+        'description' => 'Due to applicable legal restrictions, access to this section of our website is restricted to users located in certain jurisdictions.',
+        'message' => 'Please confirm your location here:',
+        'country_label' => '',
+        'select_option' => 'Please choose...',
+        'button' => 'more',
         'lang_switch' => 'DE',
         'lang_switch_url' => '/index.php?lang=de'
     ],
     'de' => [
-        'title' => 'Wählen Sie Ihr Land',
-        'description' => 'Bitte wählen Sie Ihr Land aus, um fortzufahren',
-        'country_label' => 'Land:',
-        'select_option' => '-- Land wählen --',
+        'title' => 'Kapitalerhöhung 2021',
+        'description' => 'Zum Aufrufen des Prospekts ist die Angabe des Landes Ihres ständigen Wohnsitzes/Wohnortes erforderlich.',
+        'message' => 'Der Prospekt ist nur in Englisch erhältlich.',
+        'country_label' => '',
+        'select_option' => 'Bitte wählen ...',
         'button' => 'Weiter',
         'lang_switch' => 'EN',
         'lang_switch_url' => '/index.php?lang=en'
@@ -95,6 +97,7 @@ $text = $content[$lang];
         <div class="container">
             <h1><?php echo htmlspecialchars($text['title']); ?></h1>
             <p><?php echo htmlspecialchars($text['description']); ?></p>
+            <p><?php echo htmlspecialchars($text['message']); ?></p>
 
             <?php if (isset($error)): ?>
                 <div class="error-message"><?php echo htmlspecialchars($error); ?></div>

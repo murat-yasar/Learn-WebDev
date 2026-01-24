@@ -42,16 +42,26 @@ include __DIR__ . '/../includes/header_en.php';
 
 
 <div class="container">
-    <h1>Important Disclaimer</h1>
+    <h1>DISCLAIMER –IMPORTANT</h1>
 
     <div class="disclaimer-text">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>You have indicated that you are not located in Germany or the United States. These materials are not intended for, directed at or accessible by persons located outside Germany. However, persons located in jurisdictions other than the United States that make the below certifications can access these materials. Please read the certifications below carefully and provide the information requested in order to receive these materials. If you cannot make the below certifications, please exit this page.</p>
 
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h2>Certifications</h2>
+        <h3>For users located within the EEA</h3>
 
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <p><strong>“We are located or resident in a member state of the European Economic Area (“EEA”) in which the Prospectus Regulation is applicable (each, a “Relevant Member State”) and are ‘qualified investors’ within the meaning of Article 2(e) the Prospectus Regulation (“Qualified Investors”). For these purposes, the expression “Prospectus Regulation” means Regulation (EU) 2017/1129 of the European Parliament and of the Council of 14 June 2017 on the prospectus to be published when securities are offered to the public or admitted to trading on a regulated market, and repealing Directive 2003/71/EC. Further, if we are acting as a fiduciary or agent for one or more investor accounts, (a) each such account is a Qualified Investor, (b) we have investment discretion with respect to each account, and (c) we have full power and authority to make the representations, warranties, agreements and acknowledgements herein on behalf of each such account.”</strong></p>
 
-        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        <p>By clicking “<strong>AGREE”</strong> below, you are certifying that the certifications and information provided are true and accurate, that you would like to access the materials. You agree that the materials you receive are for your own use and will not be released, published or distributed to any person (other than persons in your organization who are not located or resident in the United States, Australia, Canada, Japan or any other jurisdiction in which it would be unlawful to do so).</p>
+
+        <h3>For users outside the US and EEA who are able, under locally applicable law, to access the materials</h3>
+
+        <p><strong>“We confirm that we are an institutional investor and are not located or resident in the United States, Australia, Canada, Japan or any jurisdiction in which it would be unlawful for us to access the prospectus (the “Prospectus”) and other offer materials published by Deutsche Lufthansa Aktiengesellschaft in connection with its initial public offering of ordinary shares which are available on this website (the “Offer Materials”). We confirm that our accessing the Offer Materials, including the Prospectus, is lawful and in accordance with the laws of the jurisdiction in which we are located or resident and we confirm that we will not, nor are we authorized to, deliver, release, publish or distribute the Prospectus or the other Offer Materials, electronically or otherwise, in or into any jurisdiction or to any other person.”</strong></p>
+
+        <p>By clicking “<strong>AGREE”</strong> below, you are certifying that the certifications and information provided are true and accurate, that you would like to access the materials. You agree that the materials you receive are for your own use and will not be released, published or distributed to any person (other than persons in your organization who are not located or resident in the United States, Australia, Canada, Japan or any other jurisdiction in which it would be unlawful to do so).</p>
+
+        <p>Your data will be held by Deutsche Lufthansa Aktiengesellschaft and processed only to ensure our compliance with applicable regulations. </p>
+
     </div>
 
     <form method="POST" action="/en/disclaimer.php" class="disclaimer-form">

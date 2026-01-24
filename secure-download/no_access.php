@@ -30,18 +30,18 @@ logActivity('NO_ACCESS_PAGE_VIEWED', $_SESSION['country'] . ' - ' . $lang);
 // Language-specific content
 $content = [
     'en' => [
-        'title' => 'Access Not Available',
-        'message' => "We're sorry, but our services are currently not available in your region",
-        'submessage' => "We apologize for any inconvenience this may cause. If you believe you've reached this page in error, please contact our support team.",
-        'button' => 'Return to Homepage',
+        'title' => 'We are sorry.',
+        'message' => 'Due to applicable legal restrictions, electronic versions of these materials are not accessible by persons located in the jurisdictions you have indicated.',
+        'submessage' => 'Thank you for your understanding.',
+        'button' => 'Click here to return to the homepage.',
         'lang_switch' => 'DE',
         'lang_switch_url' => '/no_access.php?lang=de'
     ],
     'de' => [
-        'title' => 'Zugriff nicht verfügbar',
-        'message' => 'Es tut uns leid, aber unsere Dienste sind derzeit in Ihrer Region nicht verfügbar',
-        'submessage' => 'Wir entschuldigen uns für etwaige Unannehmlichkeiten. Wenn Sie glauben, dass Sie diese Seite irrtümlich erreicht haben, wenden Sie sich bitte an unser Support-Team.',
-        'button' => 'Zur Startseite zurückkehren',
+        'title' => 'Wir bitten um Entschuldigung.',
+        'message' => 'Leider sind Sie aufgrund Ihres ständigen Wohnortes nicht autorisiert die angeforderten Daten zu lesen.',
+        'submessage' => 'Vielen Dank für Ihr Verständnis.',
+        'button' => 'Bitte klicken Sie hier, um auf die Homepage zurückzukehren.',
         'lang_switch' => 'EN',
         'lang_switch_url' => '/no_access.php?lang=en'
     ]
@@ -86,7 +86,6 @@ $text = $content[$lang];
 
                 <p class="no-access-message">
                     <?php echo htmlspecialchars($text['message']); ?>
-                    <strong>(<?php echo htmlspecialchars($_SESSION['country']); ?>)</strong>.
                 </p>
 
                 <p class="no-access-submessage">

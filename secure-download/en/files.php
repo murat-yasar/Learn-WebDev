@@ -20,7 +20,9 @@ include __DIR__ . '/../includes/header_en.php';
         $documents = getActiveDocuments();
         if (empty($documents)):
         ?>
-            <p>No documents available at this time.</p>
+
+        <p>No documents available at this time.</p>
+
         <?php else: ?>
             <?php foreach ($documents as $doc): ?>
                 <div class="file-item">

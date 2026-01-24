@@ -30,21 +30,21 @@ define('ALLOWED_LANGUAGES', ['en', 'de']);
 // - 'active' => true/false to show/hide without deleting
 define('DOCUMENTS', [
     [
-        'id' => 'doc1',
+        'id' => 'DLH-DIP-2025-First-Supplement.pdf',
         'type' => 'pdf',
-        'file_en' => 'document1.pdf',  // File in assets/pdf/en/
-        'file_de' => 'document1.pdf',  // File in assets/pdf/de/
-        'name_en' => 'User Manual',
-        'name_de' => 'Benutzerhandbuch',
+        'file_en' => 'DLH-DIP-2025-First-Supplement.pdf',  // File in assets/pdf/en/
+        'file_de' => 'DLH-DIP-2025-First-Supplement.pdf',  // File in assets/pdf/de/
+        'name_en' => 'Debt Issuance Programme First Supplement 2025',
+        'name_de' => 'Debt Issuance Programme First Supplement 2025',
         'active' => true
     ],
     [
-        'id' => 'doc2',
+        'id' => 'DLH-DIP-2025-Base-Prospectus',
         'type' => 'pdf',
-        'file_en' => 'document2.pdf',
-        'file_de' => 'document2.pdf',
-        'name_en' => 'Safety Guidelines',
-        'name_de' => 'Sicherheitsrichtlinien',
+        'file_en' => 'DLH-DIP-2025-Base-Prospectus.pdf',
+        'file_de' => 'DLH-DIP-2025-Base-Prospectus.pdf',
+        'name_en' => 'Debt Issuance Programme Prospectus 2025',
+        'name_de' => 'Debt Issuance Programme Prospectus 2025',
         'active' => true
     ],
     [
@@ -52,44 +52,17 @@ define('DOCUMENTS', [
         'type' => 'pdf',
         'file_en' => 'document3.pdf',
         'file_de' => 'document3.pdf',
-        'name_en' => 'Technical Specifications',
-        'name_de' => 'Technische Spezifikationen',
-        'active' => true
-    ],
-    [
-        'id' => 'doc4',
-        'type' => 'pdf',
-        'file_en' => 'document4.pdf',
-        'file_de' => 'document4.pdf',
-        'name_en' => 'Installation Guide',
-        'name_de' => 'Installationsanleitung',
-        'active' => true
-    ],
-    [
-        'id' => 'doc5',
-        'type' => 'pdf',
-        'file_en' => 'document5.pdf',
-        'file_de' => 'document5.pdf',
-        'name_en' => 'Warranty Information',
-        'name_de' => 'Garantieinformationen',
+        'name_en' => 'Technical',
+        'name_de' => 'Technische',
         'active' => true
     ],
     [
         'id' => 'external1',
         'type' => 'external',
-        'url_en' => 'https://example.com/en/support',
-        'url_de' => 'https://example.com/de/support',
-        'name_en' => 'Online Support Portal',
-        'name_de' => 'Online-Support-Portal',
-        'active' => true
-    ],
-    [
-        'id' => 'external2',
-        'type' => 'external',
-        'url_en' => 'https://example.com/en/video-tutorials',
-        'url_de' => 'https://example.com/de/video-tutorials',
-        'name_en' => 'Video Tutorials',
-        'name_de' => 'Video-Anleitungen',
+        'url_en' => 'https://investor-relations.lufthansagroup.com/de/investor-relations.html',
+        'url_de' => 'https://investor-relations.lufthansagroup.com/de/investor-relations.html',
+        'name_en' => 'LHG',
+        'name_de' => 'LHG',
         'active' => true
     ]
 ]);

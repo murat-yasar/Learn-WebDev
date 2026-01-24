@@ -13,14 +13,17 @@ include __DIR__ . '/../includes/header_de.php';
 
 
 <div class="container">
-    <h1>Verfügbare Dokumente</h1>
+    <h1>Kapitalerhöhung 2021</h1>
+    <p>Nachfolgend finden Sie sämtliche von uns veröffentlichte Informationen zur Kapitalerhöhung.</p>
 
     <div class="files-list">
         <?php
         $documents = getActiveDocuments();
         if (empty($documents)):
         ?>
-            <p>Derzeit sind keine Dokumente verfügbar.</p>
+
+        <p>Derzeit sind keine Dokumente verfügbar.</p>
+
         <?php else: ?>
             <?php foreach ($documents as $doc): ?>
                 <div class="file-item">
@@ -37,6 +40,7 @@ include __DIR__ . '/../includes/header_de.php';
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
+
     </div>
 </div>
 

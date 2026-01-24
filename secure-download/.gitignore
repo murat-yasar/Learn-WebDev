@@ -55,8 +55,8 @@ package-lock.json
 # assets/pdf/**/*.pdf
 
 # Strategy 2: Keep placeholder PDFs, ignore real ones
-# assets/pdf/en/*.pdf
-# assets/pdf/de/*.pdf
+assets/pdf/en/*.pdf
+assets/pdf/de/*.pdf
 # !assets/pdf/en/sample.pdf
 # !assets/pdf/de/sample.pdf
 

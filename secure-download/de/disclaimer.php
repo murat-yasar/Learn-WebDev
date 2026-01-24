@@ -42,16 +42,16 @@ include __DIR__ . '/../includes/header_de.php';
 
 
 <div class="container">
-    <h1>Wichtiger Haftungsausschluss</h1>
+    <h1>WICHTIGER HINWEIS</h1>
 
     <div class="disclaimer-text">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>The information contained on the following websites and comprised in the documents available on the following websites (the "<strong>Base Prospectuses</strong>") does not constitute an offer of or an invitation to subscribe for or purchase any securities but is provided for information purposes only.</p>
 
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Securities described on the following websites and in the Base Prospectuses (the "<strong>Securities</strong>") may not be eligible for sale in certain jurisdictions or to certain persons and may not be suitable for all types of investors, and the same may apply with regard to the distribution of any information made available on the following websites and in the Base Prospectuses. Users of the following websites and the Base Prospectuses are requested to inform themselves about and to observe any such restrictions. Nothing in the following websites and in the Base Prospectuses should be regarded as investment advice being provided or a solicitation or a recommendation that any particular investor should subscribe, purchase, sell, hold or otherwise deal in any Securities. Each user is exclusively responsible for conducting his or her own investigation and analysis of the information in the following websites and in the Base Prospectuses and for evaluating the merits and risks involved in investing in the Securities that are referred to therein.</p>
 
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <p>Furthermore, reference is made to the disclaimers (the "<strong>Disclaimers</strong>") and the selling restrictions (the "<strong>Selling Restrictions</strong>") comprised in the Base Prospectuses.</p>
 
-        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        <p>By clicking on the "<strong>Accept</strong>" button below, you represent and agree that (i) you will read and accept the Disclaimers and Selling Restrictions comprised in the Base Prospectuses and (ii) you will comply with all applicable laws and regulations in force in any jurisdiction (1) in which Securities might be purchased, offered, sold or delivered and (2) regarding the possession or distribution of the Base Prospectuses. </p>
     </div>
 
     <form method="POST" action="/de/disclaimer.php" class="disclaimer-form">

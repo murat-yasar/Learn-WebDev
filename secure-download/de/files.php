@@ -13,34 +13,32 @@ include __DIR__ . '/../includes/header_de.php';
 
 
 <div class="container">
-    <h1>Kapitalerhöhung 2021</h1>
-    <p>Nachfolgend finden Sie sämtliche von uns veröffentlichte Informationen zur Kapitalerhöhung.</p>
+    <h1>Verfügbare Dokumente</h1>
 
     <div class="files-list">
         <?php
         $documents = getActiveDocuments();
         if (empty($documents)):
         ?>
-
-        <p>Derzeit sind keine Dokumente verfügbar.</p>
-
+            <p>Derzeit sind keine Dokumente verfügbar.</p>
         <?php else: ?>
             <?php foreach ($documents as $doc): ?>
                 <div class="file-item">
-                    <span class="file-name"><?php echo htmlspecialchars($doc['name_de']); ?></span>
                     <?php if ($doc['type'] === 'pdf'): ?>
-                        <a href="/download.php?id=<?php echo urlencode($doc['id']); ?>&lang=de"
-                           class="btn btn-download">Herunterladen</a>
+                        <a href="/download.php?id=<?php echo urlencode($doc['id']); ?>&lang=de" class="file-link">
+                            <?php echo htmlspecialchars($doc['name_de']); ?>
+                        </a>
                     <?php elseif ($doc['type'] === 'external'): ?>
                         <a href="<?php echo htmlspecialchars($doc['url_de']); ?>"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-download">Link öffnen</a>
+                           class="file-link file-link-external">
+                            <?php echo htmlspecialchars($doc['name_de']); ?>
+                        </a>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
-
     </div>
 </div>
 

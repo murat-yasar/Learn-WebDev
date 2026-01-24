@@ -20,21 +20,21 @@ include __DIR__ . '/../includes/header_en.php';
         $documents = getActiveDocuments();
         if (empty($documents)):
         ?>
-
-        <p>No documents available at this time.</p>
-
+            <p>No documents available at this time.</p>
         <?php else: ?>
             <?php foreach ($documents as $doc): ?>
                 <div class="file-item">
-                    <span class="file-name"><?php echo htmlspecialchars($doc['name_en']); ?></span>
                     <?php if ($doc['type'] === 'pdf'): ?>
-                        <a href="/download.php?id=<?php echo urlencode($doc['id']); ?>&lang=en"
-                           class="btn btn-download">Download</a>
+                        <a href="/download.php?id=<?php echo urlencode($doc['id']); ?>&lang=en" class="file-link">
+                            <?php echo htmlspecialchars($doc['name_en']); ?>
+                        </a>
                     <?php elseif ($doc['type'] === 'external'): ?>
                         <a href="<?php echo htmlspecialchars($doc['url_en']); ?>"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-download">Open Link</a>
+                           class="file-link file-link-external">
+                            <?php echo htmlspecialchars($doc['name_en']); ?>
+                        </a>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>

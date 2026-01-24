@@ -91,16 +91,16 @@ if (!function_exists('hasAgreedToDisclaimer')) {
 // Check access permissions
 if (!function_exists('checkAccess')) {
     function checkAccess($requireDisclaimer = false) {
-    if (!hasSelectedCountry()) {
-        header('Location: /index.php');
-        exit();
-    }
+        if (!hasSelectedCountry()) {
+            header('Location: /index.php');
+            exit();
+        }
 
-    if ($requireDisclaimer && requiresDisclaimer($_SESSION['country']) && !hasAgreedToDisclaimer()) {
-        $lang = validateLanguage($_GET['lang'] ?? 'en') ? $_GET['lang'] : 'en';
-        header("Location: /{$lang}/disclaimer.php");
-        exit();
-    }
+        if ($requireDisclaimer && requiresDisclaimer($_SESSION['country']) && !hasAgreedToDisclaimer()) {
+            $lang = validateLanguage($_GET['lang'] ?? 'en') ? $_GET['lang'] : 'en';
+            header("Location: /{$lang}/disclaimer.php");
+            exit();
+        }
     }
 }
 
@@ -120,31 +120,31 @@ if (!function_exists('logActivity')) {
 if (!function_exists('getText')) {
     function getText($key, $lang) {
         $texts = [
-        'en' => [
-            'select_country' => 'Select Your Country',
-            'choose_country' => 'Please choose your country to continue',
-            'submit' => 'Continue',
-            'disclaimer_title' => 'Important Disclaimer',
-            'agree' => 'I Agree',
-            'disagree' => 'I Disagree',
-            'files_title' => 'Available Documents',
-            'download' => 'Download',
-            'home' => 'Home',
-        ],
-        'de' => [
-            'select_country' => 'Wählen Sie Ihr Land',
-            'choose_country' => 'Bitte wählen Sie Ihr Land aus, um fortzufahren',
-            'submit' => 'Weiter',
-            'disclaimer_title' => 'Wichtiger Haftungsausschluss',
-            'agree' => 'Ich stimme zu',
-            'disagree' => 'Ich lehne ab',
-            'files_title' => 'Verfügbare Dokumente',
-            'download' => 'Herunterladen',
-            'home' => 'Startseite',
-        ]
-    ];
+            'en' => [
+                'select_country' => 'Select Your Country',
+                'choose_country' => 'Please choose your country to continue',
+                'submit' => 'Continue',
+                'disclaimer_title' => 'Important Disclaimer',
+                'agree' => 'I Agree',
+                'disagree' => 'I Disagree',
+                'files_title' => 'Available Documents',
+                'download' => 'Download',
+                'home' => 'Home',
+            ],
+            'de' => [
+                'select_country' => 'Wählen Sie Ihr Land',
+                'choose_country' => 'Bitte wählen Sie Ihr Land aus, um fortzufahren',
+                'submit' => 'Weiter',
+                'disclaimer_title' => 'Wichtiger Haftungsausschluss',
+                'agree' => 'Ich stimme zu',
+                'disagree' => 'Ich lehne ab',
+                'files_title' => 'Verfügbare Dokumente',
+                'download' => 'Herunterladen',
+                'home' => 'Startseite',
+            ]
+        ];
 
-    return $texts[$lang][$key] ?? $key;
+        return $texts[$lang][$key] ?? $key;
     }
 }
 

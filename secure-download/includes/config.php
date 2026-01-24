@@ -30,30 +30,12 @@ define('ALLOWED_LANGUAGES', ['en', 'de']);
 // - 'active' => true/false to show/hide without deleting
 define('DOCUMENTS', [
     [
-        'id' => 'DLH-DIP-2025-First-Supplement.pdf',
+        'id' => 'doc1',
         'type' => 'pdf',
-        'file_en' => 'DLH-DIP-2025-First-Supplement.pdf',  // File in assets/pdf/en/
-        'file_de' => 'DLH-DIP-2025-First-Supplement.pdf',  // File in assets/pdf/de/
-        'name_en' => 'Debt Issuance Programme First Supplement 2025',
-        'name_de' => 'Debt Issuance Programme First Supplement 2025',
-        'active' => true
-    ],
-    [
-        'id' => 'DLH-DIP-2025-Base-Prospectus',
-        'type' => 'pdf',
-        'file_en' => 'DLH-DIP-2025-Base-Prospectus.pdf',
-        'file_de' => 'DLH-DIP-2025-Base-Prospectus.pdf',
-        'name_en' => 'Debt Issuance Programme Prospectus 2025',
-        'name_de' => 'Debt Issuance Programme Prospectus 2025',
-        'active' => true
-    ],
-    [
-        'id' => 'doc3',
-        'type' => 'pdf',
-        'file_en' => 'document3.pdf',
-        'file_de' => 'document3.pdf',
-        'name_en' => 'Technical',
-        'name_de' => 'Technische',
+        'file_en' => 'doc1',  // File in assets/pdf/en/
+        'file_de' => 'doc1',  // File in assets/pdf/de/
+        'name_en' => 'doc1',
+        'name_de' => 'doc1',
         'active' => true
     ],
     [

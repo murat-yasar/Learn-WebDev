@@ -23,3 +23,6 @@ Options -Indexes
 
 # Disable server signature
 ServerSignature Off
+
+# Custom 404 Error Page
+ErrorDocument 404 /404.php

@@ -216,3 +216,79 @@ select:focus {
     margin: 0;
     color: white;
 }
+
+.no-access-content {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.no-access-icon {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-access-message {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.no-access-submessage {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.no-access-actions {
+    margin-top: 2rem;
+}
+
+.no-access-actions .btn {
+    min-width: 200px;
+}
+
+.error-404-content {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.error-404-heading {
+    font-size: 2rem;
+    color: #95a5a6;
+    margin-bottom: 2rem;
+}
+
+.error-404-icon {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-404-message {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.error-404-submessage {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.error-404-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error-404-actions .btn {
+    min-width: 150px;
+}

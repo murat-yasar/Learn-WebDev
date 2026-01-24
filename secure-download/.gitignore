@@ -1,5 +1,86 @@
-/logs
+# Log files
+logs/
+*.log
 
-/assets/pdf
+# Session files
+sessions/
+tmp/
 
-/TODO.md
+# Environment and configuration files (if you add them later)
+.env
+.env.local
+config.local.php
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# MAMP/XAMPP/WAMP specific
+.mamp/
+.xampp/
+
+# Backup files
+*.bak
+*.backup
+*~
+*.swp
+*.swo
+
+# Composer (if you add it later)
+/vendor/
+composer.lock
+composer.phar
+
+# Node modules (if you add frontend build tools later)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Build and cache files
+/cache/
+/temp/
+*.cache
+
+# Uploaded files (uncomment if you add user uploads)
+# /uploads/*
+# !/uploads/.gitkeep
+
+# PDF files - IMPORTANT: Choose your strategy
+# Strategy 1: Ignore all PDFs (if PDFs are confidential/large)
+# assets/pdf/**/*.pdf
+
+# Strategy 2: Keep placeholder PDFs, ignore real ones
+# assets/pdf/en/*.pdf
+# assets/pdf/de/*.pdf
+# !assets/pdf/en/sample.pdf
+# !assets/pdf/de/sample.pdf
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Security - Never commit these!
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+id_rsa*
+*.sql
+database.sqlite
+
+# Test files
+/tests/temp/
+phpunit.xml
+.phpunit.result.cache

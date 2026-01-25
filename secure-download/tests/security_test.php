@@ -10,12 +10,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 class SecurityTester {
-    private $baseUrl = 'http://localhost'; // Change to your MAMP URL
+    private $baseUrl = 'http://localhost';
     private $results = [];
     private $logFile = '';
     private $detailedLog = [];
     private $testId = 'DLH-DIP-2016-Base-Prospectus';
-    private $testDocPath = 'assets/pdf';
+    private $testDocPath = 'assets/pdf'; // Fixed: removed leading slash
     private $testDoc = 'DLH-DIP-2016-Base-Prospectus.pdf';
     private $testLang = 'en';
 
@@ -24,17 +24,14 @@ class SecurityTester {
             $this->baseUrl = rtrim($baseUrl, '/');
         }
 
-        // Create logs directory if it doesn't exist
         $logsDir = __DIR__ . '/test-logs';
         if (!is_dir($logsDir)) {
             mkdir($logsDir, 0755, true);
         }
 
-        // Create timestamped log file
         $timestamp = date('Y-m-d_H-i-s');
         $this->logFile = $logsDir . '/security_test_' . $timestamp . '.log';
 
-        // Initialize log file
         $this->writeLog("========================================");
         $this->writeLog("SECURITY TEST LOG");
         $this->writeLog("Started: " . date('Y-m-d H:i:s'));
@@ -73,10 +70,9 @@ class SecurityTester {
         $this->writeLog("\nTest: Form submission without CSRF token");
         $result = $this->makeRequest('/index.php', 'POST', [
             'country' => 'EU'
-            // Missing csrf_token
         ]);
 
-        if (stripos($result, 'invalid request') !== false) {
+        if (stripos($result, 'invalid request') !== false || stripos($result, 'Invalid request') !== false) {
             $this->addResult('CSRF Protection', 'PASS', 'Form rejected without CSRF token');
         } else {
             $this->addResult('CSRF Protection', 'FAIL', 'Form accepted without CSRF token', $result);
@@ -89,7 +85,7 @@ class SecurityTester {
             'csrf_token' => 'invalid_token_12345'
         ]);
 
-        if (stripos($result, 'invalid request') !== false) {
+        if (stripos($result, 'invalid request') !== false || stripos($result, 'Invalid request') !== false) {
             $this->addResult('CSRF - Invalid Token', 'PASS', 'Invalid token rejected');
         } else {
             $this->addResult('CSRF - Invalid Token', 'FAIL', 'Invalid token accepted', $result);
@@ -101,7 +97,6 @@ class SecurityTester {
     private function testSessionSecurity() {
         echo "Testing Session Security...\n";
 
-        // Test 1: Check session cookie flags
         $headers = get_headers($this->baseUrl . '/index.php', 1);
 
         $hasHttpOnly = false;
@@ -129,28 +124,32 @@ class SecurityTester {
 
         // Test 1: Try to access config.php directly
         $result = $this->makeRequest('/includes/config.php');
+        $httpCode = $this->getHttpCode('/includes/config.php');
 
         if (stripos($result, 'Direct access not permitted') !== false ||
-            http_response_code() === 403) {
+            stripos($result, 'Forbidden') !== false ||
+            $httpCode === 403) {
             $this->addResult('Config File Protection', 'PASS', 'Config file protected');
         } else {
-            $this->addResult('Config File Protection', 'FAIL', 'Config file accessible');
+            $this->addResult('Config File Protection', 'FAIL', 'Config file accessible', $result);
         }
 
         // Test 2: Try to access functions.php directly
         $result = $this->makeRequest('/includes/functions.php');
+        $httpCode = $this->getHttpCode('/includes/functions.php');
 
         if (stripos($result, 'Direct access not permitted') !== false ||
-            http_response_code() === 403) {
+            stripos($result, 'Forbidden') !== false ||
+            $httpCode === 403) {
             $this->addResult('Functions File Protection', 'PASS', 'Functions file protected');
         } else {
-            $this->addResult('Functions File Protection', 'FAIL', 'Functions file accessible');
+            $this->addResult('Functions File Protection', 'FAIL', 'Functions file accessible', $result);
         }
 
         // Test 3: Try to access log files
-        $result = $this->makeRequest('/logs/access.log');
+        $httpCode = $this->getHttpCode('/logs/access.log');
 
-        if (http_response_code() === 403 || stripos($result, 'forbidden') !== false) {
+        if ($httpCode === 403 || $httpCode === 404) {
             $this->addResult('Log File Protection', 'PASS', 'Log files protected');
         } else {
             $this->addResult('Log File Protection', 'FAIL', 'Log files accessible');
@@ -161,6 +160,7 @@ class SecurityTester {
 
     private function testPathTraversal() {
         echo "Testing Path Traversal Protection...\n";
+        $this->writeLog("\n=== PATH TRAVERSAL TESTS ===");
 
         $traversalAttempts = [
             '../../../etc/passwd',
@@ -171,14 +171,30 @@ class SecurityTester {
         ];
 
         foreach ($traversalAttempts as $attempt) {
-            $result = $this->makeRequest('/download.php?id=' . urlencode($attempt) . '&lang={$testLang}');
+            // Fixed: Use double quotes for variable interpolation
+            $url = "/download.php?id=" . urlencode($attempt) . "&lang=" . $this->testLang;
+            $result = $this->makeRequest($url);
+            $httpCode = $this->getHttpCode($url);
 
-            if (stripos($result, 'not found') !== false ||
+            $this->writeLog("\nTest: Path traversal with: " . $attempt);
+            $this->writeLog("URL: " . $url);
+            $this->writeLog("HTTP Code: " . $httpCode);
+
+            // Check for proper rejection
+            $isBlocked = (
+                stripos($result, 'not found') !== false ||
+                stripos($result, 'Document not found') !== false ||
                 stripos($result, 'invalid') !== false ||
-                http_response_code() === 404) {
+                stripos($result, 'Invalid filename') !== false ||
+                stripos($result, 'Access denied') !== false ||
+                $httpCode === 404 ||
+                $httpCode === 403
+            );
+
+            if ($isBlocked) {
                 $this->addResult('Path Traversal - ' . substr($attempt, 0, 20), 'PASS', 'Attempt blocked');
             } else {
-                $this->addResult('Path Traversal - ' . substr($attempt, 0, 20), 'FAIL', 'Potential vulnerability');
+                $this->addResult('Path Traversal - ' . substr($attempt, 0, 20), 'FAIL', 'Potential vulnerability', $result);
             }
         }
 
@@ -202,13 +218,12 @@ class SecurityTester {
                 'csrf_token' => 'test'
             ]);
 
-            // Should not execute SQL or show SQL errors
             if (stripos($result, 'sql') === false &&
                 stripos($result, 'mysql') === false &&
                 stripos($result, 'database') === false) {
                 $this->addResult('SQL Injection - ' . substr($payload, 0, 15), 'PASS', 'No SQL error exposed');
             } else {
-                $this->addResult('SQL Injection - ' . substr($payload, 0, 15), 'FAIL', 'Potential SQL injection');
+                $this->addResult('SQL Injection - ' . substr($payload, 0, 15), 'FAIL', 'Potential SQL injection', $result);
             }
         }
 
@@ -232,13 +247,12 @@ class SecurityTester {
                 'csrf_token' => 'test'
             ]);
 
-            // Check if script tags are escaped
             if (stripos($result, '<script>') === false &&
                 stripos($result, 'onerror=') === false &&
                 stripos($result, 'javascript:') === false) {
                 $this->addResult('XSS Protection - ' . substr($payload, 0, 20), 'PASS', 'XSS payload escaped');
             } else {
-                $this->addResult('XSS Protection - ' . substr($payload, 0, 20), 'FAIL', 'XSS vulnerability detected');
+                $this->addResult('XSS Protection - ' . substr($payload, 0, 20), 'FAIL', 'XSS vulnerability detected', $result);
             }
         }
 
@@ -247,25 +261,35 @@ class SecurityTester {
 
     private function testAccessControl() {
         echo "Testing Access Control...\n";
+        $this->writeLog("\n=== ACCESS CONTROL TESTS ===");
 
         // Test 1: Access files.php without country selection
         $result = $this->makeRequest('/en/files.php');
+        $httpCode = $this->getHttpCode('/en/files.php');
 
-        if (stripos($result, 'Location: /index.php') !== false ||
-            stripos($result, 'redirect') !== false) {
+        $this->writeLog("\nTest: Access files.php without session");
+        $this->writeLog("HTTP Code: " . $httpCode);
+
+        if (stripos($result, 'Location:') !== false ||
+            stripos($result, 'redirect') !== false ||
+            $httpCode === 302 ||
+            $httpCode === 301) {
             $this->addResult('Access Control - Files Page', 'PASS', 'Redirected to index');
         } else {
-            $this->addResult('Access Control - Files Page', 'WARNING', 'Check if redirect works');
+            $this->addResult('Access Control - Files Page', 'FAIL', 'Files page accessible without auth', $result);
         }
 
         // Test 2: Access disclaimer.php without country selection
         $result = $this->makeRequest('/en/disclaimer.php');
+        $httpCode = $this->getHttpCode('/en/disclaimer.php');
 
-        if (stripos($result, 'Location: /index.php') !== false ||
-            stripos($result, 'redirect') !== false) {
+        if (stripos($result, 'Location:') !== false ||
+            stripos($result, 'redirect') !== false ||
+            $httpCode === 302 ||
+            $httpCode === 301) {
             $this->addResult('Access Control - Disclaimer Page', 'PASS', 'Redirected to index');
         } else {
-            $this->addResult('Access Control - Disclaimer Page', 'WARNING', 'Check if redirect works');
+            $this->addResult('Access Control - Disclaimer Page', 'FAIL', 'Disclaimer accessible without auth', $result);
         }
 
         echo "\n";
@@ -273,31 +297,59 @@ class SecurityTester {
 
     private function testFileDownloadSecurity() {
         echo "Testing File Download Security...\n";
+        $this->writeLog("\n=== FILE DOWNLOAD SECURITY TESTS ===");
 
         // Test 1: Try to download without authentication
-        $result = $this->makeRequest('/download.php?id={$testId}&lang={$testLang}');
+        $url = "/download.php?id=" . $this->testId . "&lang=" . $this->testLang;
+        $result = $this->makeRequest($url);
+        $httpCode = $this->getHttpCode($url);
+
+        $this->writeLog("\nTest: Download without authentication");
+        $this->writeLog("URL: " . $url);
+        $this->writeLog("HTTP Code: " . $httpCode);
 
         if (stripos($result, 'not found') !== false ||
+            stripos($result, 'Document not found') !== false ||
             stripos($result, 'redirect') !== false ||
-            http_response_code() === 404) {
+            $httpCode === 404 ||
+            $httpCode === 302 ||
+            $httpCode === 301) {
             $this->addResult('Download - No Auth', 'PASS', 'Download blocked without auth');
         } else {
-            $this->addResult('Download - No Auth', 'FAIL', 'File accessible without auth');
+            $this->addResult('Download - No Auth', 'FAIL', 'File accessible without auth', substr($result, 0, 200));
         }
 
         // Test 2: Try to access PDF directly
-        $result = $this->makeRequest('/{$testDocPath}/{$testLang}/{$testDoc}.pdf');
+        $directUrl = "/" . $this->testDocPath . "/" . $this->testLang . "/" . $this->testDoc;
+        $httpCode = $this->getHttpCode($directUrl);
 
-        // PDFs should not be directly accessible OR should be protected
-        $this->addResult('Direct PDF Access', 'INFO', 'Check if PDFs are directly accessible');
+        $this->writeLog("\nTest: Direct PDF access");
+        $this->writeLog("URL: " . $directUrl);
+        $this->writeLog("HTTP Code: " . $httpCode);
+
+        if ($httpCode === 403 || $httpCode === 404) {
+            $this->addResult('Direct PDF Access', 'PASS', 'Direct PDF access blocked');
+        } else {
+            $this->addResult('Direct PDF Access', 'WARNING', 'PDFs may be directly accessible (HTTP ' . $httpCode . ')');
+        }
 
         // Test 3: Invalid document ID
-        $result = $this->makeRequest('/download.php?id=../../etc/passwd&lang={$testLang}');
+        $invalidUrl = "/download.php?id=../../etc/passwd&lang=" . $this->testLang;
+        $result = $this->makeRequest($invalidUrl);
+        $httpCode = $this->getHttpCode($invalidUrl);
 
-        if (stripos($result, 'not found') !== false || http_response_code() === 404) {
+        $this->writeLog("\nTest: Invalid document ID");
+        $this->writeLog("URL: " . $invalidUrl);
+        $this->writeLog("HTTP Code: " . $httpCode);
+
+        if (stripos($result, 'not found') !== false ||
+            stripos($result, 'Document not found') !== false ||
+            stripos($result, 'Invalid') !== false ||
+            $httpCode === 404 ||
+            $httpCode === 403) {
             $this->addResult('Download - Invalid ID', 'PASS', 'Invalid ID rejected');
         } else {
-            $this->addResult('Download - Invalid ID', 'FAIL', 'Invalid ID accepted');
+            $this->addResult('Download - Invalid ID', 'FAIL', 'Invalid ID accepted', $result);
         }
 
         echo "\n";
@@ -310,23 +362,23 @@ class SecurityTester {
 
         // Check for X-Content-Type-Options
         if (isset($headers['X-Content-Type-Options'])) {
-            $this->addResult('X-Content-Type-Options Header', 'PASS', 'Header present');
+            $this->addResult('X-Content-Type-Options Header', 'PASS', 'Header present: ' . $headers['X-Content-Type-Options']);
         } else {
-            $this->addResult('X-Content-Type-Options Header', 'WARNING', 'Header missing');
+            $this->addResult('X-Content-Type-Options Header', 'WARNING', 'Header missing - add to .htaccess or php');
         }
 
         // Check for X-Frame-Options
         if (isset($headers['X-Frame-Options'])) {
-            $this->addResult('X-Frame-Options Header', 'PASS', 'Header present');
+            $this->addResult('X-Frame-Options Header', 'PASS', 'Header present: ' . $headers['X-Frame-Options']);
         } else {
-            $this->addResult('X-Frame-Options Header', 'WARNING', 'Header missing');
+            $this->addResult('X-Frame-Options Header', 'WARNING', 'Header missing - add to .htaccess or php');
         }
 
         // Check for X-XSS-Protection
         if (isset($headers['X-XSS-Protection'])) {
-            $this->addResult('X-XSS-Protection Header', 'PASS', 'Header present');
+            $this->addResult('X-XSS-Protection Header', 'PASS', 'Header present: ' . $headers['X-XSS-Protection']);
         } else {
-            $this->addResult('X-XSS-Protection Header', 'WARNING', 'Header missing');
+            $this->addResult('X-XSS-Protection Header', 'WARNING', 'Header missing - add to .htaccess or php');
         }
 
         echo "\n";
@@ -341,17 +393,17 @@ class SecurityTester {
             'csrf_token' => 'test'
         ]);
 
-        if (stripos($result, 'invalid') !== false || stripos($result, 'error') !== false) {
+        if (stripos($result, 'invalid') !== false ||
+            stripos($result, 'Invalid') !== false ||
+            stripos($result, 'error') !== false) {
             $this->addResult('Input Validation - Country', 'PASS', 'Invalid country rejected');
         } else {
-            $this->addResult('Input Validation - Country', 'FAIL', 'Invalid country accepted');
+            $this->addResult('Input Validation - Country', 'FAIL', 'Invalid country accepted', $result);
         }
 
         // Test 2: Invalid language
-        $result = $this->makeRequest('/en/files.php?lang=invalid');
-
-        // Should default to 'en' or reject
-        $this->addResult('Input Validation - Language', 'INFO', 'Check language validation');
+        $httpCode = $this->getHttpCode('/en/files.php?lang=invalid');
+        $this->addResult('Input Validation - Language', 'INFO', 'Language validation test (HTTP ' . $httpCode . ')');
 
         // Test 3: Long input (buffer overflow attempt)
         $longString = str_repeat('A', 10000);
@@ -360,7 +412,9 @@ class SecurityTester {
             'csrf_token' => 'test'
         ]);
 
-        if (stripos($result, 'invalid') !== false || stripos($result, 'error') !== false) {
+        if (stripos($result, 'invalid') !== false ||
+            stripos($result, 'Invalid') !== false ||
+            stripos($result, 'error') !== false) {
             $this->addResult('Input Validation - Buffer Overflow', 'PASS', 'Long input rejected');
         } else {
             $this->addResult('Input Validation - Buffer Overflow', 'WARNING', 'Long input accepted');
@@ -375,8 +429,9 @@ class SecurityTester {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false); // Don't follow redirects
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 
         if ($method === 'POST') {
             curl_setopt($ch, CURLOPT_POST, true);
@@ -384,9 +439,31 @@ class SecurityTester {
         }
 
         $response = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            $this->writeLog("CURL Error: " . curl_error($ch));
+        }
+
         curl_close($ch);
 
         return $response;
+    }
+
+    private function getHttpCode($path) {
+        $url = $this->baseUrl . $path;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+
+        curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        return $httpCode;
     }
 
     private function addResult($test, $status, $message, $details = '') {
@@ -396,7 +473,6 @@ class SecurityTester {
             'message' => $message
         ];
 
-        // Log to file with details
         $logEntry = sprintf("[%s] %s: %s", $status, $test, $message);
         $this->writeLog($logEntry);
 
@@ -416,7 +492,6 @@ class SecurityTester {
     }
 
     private function sanitizeForLog($text) {
-        // Remove binary data and long responses
         $text = substr($text, 0, 1000);
         $text = preg_replace('/[^\x20-\x7E\n\r\t]/', '', $text);
         return $text;
@@ -440,19 +515,19 @@ class SecurityTester {
             $color = '';
             switch ($result['status']) {
                 case 'PASS':
-                    $color = "\033[32m"; // Green
+                    $color = "\033[32m";
                     $passed++;
                     break;
                 case 'FAIL':
-                    $color = "\033[31m"; // Red
+                    $color = "\033[31m";
                     $failed++;
                     break;
                 case 'WARNING':
-                    $color = "\033[33m"; // Yellow
+                    $color = "\033[33m";
                     $warnings++;
                     break;
                 case 'INFO':
-                    $color = "\033[36m"; // Cyan
+                    $color = "\033[36m";
                     $info++;
                     break;
             }
@@ -517,7 +592,7 @@ class SecurityTester {
         $this->writeLog("========================================\n");
 
         if (empty($this->detailedLog)) {
-            $this->writeLog("No failures or warnings detected!");
+            $this->writeLog("No failures or warnings with details logged.");
             return;
         }
 
@@ -568,13 +643,16 @@ class SecurityTester {
             'Config File Protection' => 'Add .htaccess rules to block direct access to includes/ directory.',
             'Functions File Protection' => 'Add .htaccess rules to block direct access to includes/ directory.',
             'Log File Protection' => 'Add .htaccess in logs/ directory to deny all access.',
+            'Path Traversal' => 'Validate document IDs against whitelist before any file operations.',
             'Download - No Auth' => 'Add session/country check at the beginning of download.php.',
+            'Download - Invalid ID' => 'Reject invalid IDs early in download.php before any file operations.',
             'Access Control - Files Page' => 'Ensure checkAccess() function is called in en/files.php and de/files.php.',
             'Access Control - Disclaimer Page' => 'Ensure checkAccess() is called in disclaimer pages.',
             'Session HttpOnly Flag' => 'Set ini_set("session.cookie_httponly", 1) in config.php.',
-            'X-Content-Type-Options Header' => 'Add "Header set X-Content-Type-Options nosniff" to .htaccess.',
-            'X-Frame-Options Header' => 'Add "Header set X-Frame-Options SAMEORIGIN" to .htaccess.',
-            'X-XSS-Protection Header' => 'Add "Header set X-XSS-Protection 1; mode=block" to .htaccess.',
+            'X-Content-Type-Options Header' => 'Add header("X-Content-Type-Options: nosniff") to all PHP files or .htaccess.',
+            'X-Frame-Options Header' => 'Add header("X-Frame-Options: SAMEORIGIN") to all PHP files or .htaccess.',
+            'X-XSS-Protection Header' => 'Add header("X-XSS-Protection: 1; mode=block") to all PHP files or .htaccess.',
+            'Direct PDF Access' => 'Move PDFs outside web root or add .htaccess protection to assets/pdf/ directory.',
         ];
 
         foreach ($recommendations as $key => $value) {
@@ -587,7 +665,6 @@ class SecurityTester {
     }
 }
 
-// Run tests if executed from command line
 if (php_sapi_name() === 'cli') {
     $baseUrl = $argv[1] ?? 'http://localhost';
     $tester = new SecurityTester($baseUrl);

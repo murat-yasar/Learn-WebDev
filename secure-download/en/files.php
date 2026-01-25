@@ -3,6 +3,11 @@ define('APP_STARTED', true);
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/functions.php';
 
+// Security headers
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('X-XSS-Protection: 1; mode=block');
+
 startSecureSession();
 checkAccess(true);
 
@@ -14,13 +19,14 @@ include __DIR__ . '/../includes/header_en.php';
 
 <div class="container">
     <h1>Available Documents</h1>
-
     <div class="files-list">
         <?php
         $documents = getActiveDocuments();
         if (empty($documents)):
         ?>
-            <p>No documents available at this time.</p>
+
+        <p>No documents available at this time.</p>
+
         <?php else: ?>
             <?php foreach ($documents as $doc): ?>
                 <div class="file-item">
@@ -41,6 +47,5 @@ include __DIR__ . '/../includes/header_en.php';
         <?php endif; ?>
     </div>
 </div>
-
 
 <?php include __DIR__ . '/../includes/footer_en.php'; ?>

@@ -104,22 +104,22 @@
 
 1. **OWASP ZAP Quick Scan:**
    ```bash
-   docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost
+   docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8888
    ```
 
 2. **Nikto Scan:**
    ```bash
-   nikto -h http://localhost
+   nikto -h http://localhost:8888
    ```
 
 3. **Directory Enumeration:**
    ```bash
-   dirb http://localhost
+   dirb http://localhost:8888
    ```
 
 4. **SQL Injection Test:**
    ```bash
-   sqlmap -u "http://localhost/index.php" --forms --batch
+   sqlmap -u "http://localhost:8888/index.php" --forms --batch
    ```
 
 ## Expected Security Posture

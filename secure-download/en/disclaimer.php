@@ -3,8 +3,13 @@ define('APP_STARTED', true);
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/functions.php';
 
+// Security headers
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('X-XSS-Protection: 1; mode=block');
+
 startSecureSession();
-checkAccess();
+checkAccess(); // Require country selection
 
 // Only show disclaimer for countries that require it
 if (!requiresDisclaimer($_SESSION['country'])) {
@@ -17,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verify CSRF token
     if (!isset($_POST['csrf_token']) || !verifyCSRFToken($_POST['csrf_token'])) {
         logActivity('CSRF_FAILED', 'Disclaimer response');
+        http_response_code(403);
         die('Invalid request');
     }
 

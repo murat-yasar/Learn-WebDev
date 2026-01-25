@@ -3,12 +3,17 @@ define('APP_STARTED', true);
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/functions.php';
 
+// Security headers
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('X-XSS-Protection: 1; mode=block');
+
 startSecureSession();
 checkAccess(true);
 
 logActivity('FILES_PAGE_ACCESSED', $_SESSION['country']);
 
-include __DIR__ . '/../includes/header_de.php';
+include __DIR__ . '/../includes/header_en.php';
 ?>
 
 
@@ -43,6 +48,5 @@ include __DIR__ . '/../includes/header_de.php';
         <?php endif; ?>
     </div>
 </div>
-
 
 <?php include __DIR__ . '/../includes/footer_de.php'; ?>

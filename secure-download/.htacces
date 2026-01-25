@@ -1,28 +1,103 @@
-<?php exit; ?>
-# Prevent direct access to PHP files in includes
+# Enable RewriteEngine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+# Prevent direct access to PHP files in includes directory
 <FilesMatch "^(config|functions)\.php$">
-    Order Allow,Deny
-    Deny from all
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order Allow,Deny
+        Deny from all
+    </IfModule>
 </FilesMatch>
+
+# Block access to includes directory entirely
+<IfModule mod_rewrite.c>
+    RewriteRule ^includes/.*$ - [F,L]
+</IfModule>
 
 # Prevent directory listing
 Options -Indexes
 
 # Prevent access to log files
-<Files ~ "\.log$">
-    Order allow,deny
-    Deny from all
-</Files>
+<FilesMatch "\.log$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
 
-# Security headers
+# Block access to logs directory
+<IfModule mod_rewrite.c>
+    RewriteRule ^logs/.*$ - [F,L]
+</IfModule>
+
+# Prevent access to test directory (if in production)
+<IfModule mod_rewrite.c>
+    RewriteRule ^tests/.*$ - [F,L]
+</IfModule>
+
+# Security headers (if mod_headers is available)
 <IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-XSS-Protection "1; mode=block"
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Remove sensitive headers
+    Header always unset X-Powered-By
+    Header unset X-Powered-By
 </IfModule>
 
 # Disable server signature
 ServerSignature Off
 
-# Custom 404 Error Page
+# Protect sensitive files
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Block access to hidden files (except .well-known)
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# Custom error pages
+ErrorDocument 403 /403.php
 ErrorDocument 404 /404.php
+
+# PHP security settings (if allowed)
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_flag expose_php Off
+</IfModule>
+
+# Force HTTPS (uncomment when deploying to production with SSL)
+# <IfModule mod_rewrite.c>
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>

@@ -1,5 +1,5 @@
 <?php
-http_response_code(404);
+http_response_code(403);
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
 header('X-XSS-Protection: 1; mode=block');
@@ -11,11 +11,11 @@ header('X-XSS-Protection: 1; mode=block');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>403 - Access Denied</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,7 +34,7 @@ header('X-XSS-Protection: 1; mode=block');
         h1 {
             font-size: 6rem;
             margin: 0;
-            color: #f5576c;
+            color: #667eea;
         }
         h2 {
             margin: 1rem 0;
@@ -48,22 +48,22 @@ header('X-XSS-Protection: 1; mode=block');
             display: inline-block;
             margin-top: 1.5rem;
             padding: 0.75rem 2rem;
-            background: #f5576c;
+            background: #667eea;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: background 0.3s;
         }
         a:hover {
-            background: #f093fb;
+            background: #764ba2;
         }
     </style>
 </head>
 <body>
     <div class="error-container">
-        <h1>404</h1>
-        <h2>Page Not Found</h2>
-        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <h1>403</h1>
+        <h2>Access Denied</h2>
+        <p>You don't have permission to access this resource.</p>
         <a href="/index.php">Return to Home</a>
     </div>
 </body>

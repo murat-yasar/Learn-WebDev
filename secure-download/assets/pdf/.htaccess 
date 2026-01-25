@@ -1,0 +1,16 @@
+# Block all direct access to PDFs
+# PDFs should only be accessible through download.php
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Deny from all
+</IfModule>
+
+# Alternative: Allow only from localhost (for testing)
+# <IfModule mod_authz_core.c>
+#     Require ip 127.0.0.1
+# </IfModule>

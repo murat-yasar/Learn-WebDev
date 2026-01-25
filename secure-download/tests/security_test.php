@@ -14,6 +14,10 @@ class SecurityTester {
     private $results = [];
     private $logFile = '';
     private $detailedLog = [];
+    private $testId = 'DLH-DIP-2016-Base-Prospectus';
+    private $testDocPath = 'assets/pdf';
+    private $testDoc = 'DLH-DIP-2016-Base-Prospectus.pdf';
+    private $testLang = 'en';
 
     public function __construct($baseUrl = null) {
         if ($baseUrl) {
@@ -167,7 +171,7 @@ class SecurityTester {
         ];
 
         foreach ($traversalAttempts as $attempt) {
-            $result = $this->makeRequest('/download.php?id=' . urlencode($attempt) . '&lang=en');
+            $result = $this->makeRequest('/download.php?id=' . urlencode($attempt) . '&lang={$testLang}');
 
             if (stripos($result, 'not found') !== false ||
                 stripos($result, 'invalid') !== false ||
@@ -271,7 +275,7 @@ class SecurityTester {
         echo "Testing File Download Security...\n";
 
         // Test 1: Try to download without authentication
-        $result = $this->makeRequest('/download.php?id=doc1&lang=en');
+        $result = $this->makeRequest('/download.php?id={$testId}&lang={$testLang}');
 
         if (stripos($result, 'not found') !== false ||
             stripos($result, 'redirect') !== false ||
@@ -282,13 +286,13 @@ class SecurityTester {
         }
 
         // Test 2: Try to access PDF directly
-        $result = $this->makeRequest('/assets/pdf/en/document1.pdf');
+        $result = $this->makeRequest('/{$testDocPath}/{$testLang}/{$testDoc}.pdf');
 
         // PDFs should not be directly accessible OR should be protected
         $this->addResult('Direct PDF Access', 'INFO', 'Check if PDFs are directly accessible');
 
         // Test 3: Invalid document ID
-        $result = $this->makeRequest('/download.php?id=../../etc/passwd&lang=en');
+        $result = $this->makeRequest('/download.php?id=../../etc/passwd&lang={$testLang}');
 
         if (stripos($result, 'not found') !== false || http_response_code() === 404) {
             $this->addResult('Download - Invalid ID', 'PASS', 'Invalid ID rejected');

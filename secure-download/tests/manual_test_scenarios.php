@@ -3,8 +3,14 @@
  * Manual Test Scenarios
  * Copy and paste these URLs/commands to test manually
  */
-
+    // TEST VARIABLES
+    $test_url = 'http://localhost';
+    $test_id = 'DLH-DIP-2016-Base-Prospectus';
+    $test_doc_path = 'assets/pdf/en';
+    $test_doc = 'DLH-DIP-2016-Base-Prospectus.pdf';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,21 +77,21 @@
 
         <div class="test-case">
             <strong>Test 1.1:</strong> Directory Traversal - Linux<br>
-            <code id="test1_1">http://localhost:8888/download.php?id=../../../etc/passwd&lang=en</code>
+            <code id="test1_1"><?= $test_url ?>/download.php?id=../../../etc/passwd&lang=en</code>
             <button class="copy-btn" onclick="copy('test1_1')">Copy</button><br>
             <span class="expected">Expected: 404 or "Document not found"</span>
         </div>
 
         <div class="test-case">
             <strong>Test 1.2:</strong> Directory Traversal - Encoded<br>
-            <code id="test1_2">http://localhost:8888/download.php?id=..%2F..%2F..%2Fetc%2Fpasswd&lang=en</code>
+            <code id="test1_2"><?= $test_url ?>/download.php?id=..%2F..%2F..%2Fetc%2Fpasswd&lang=en</code>
             <button class="copy-btn" onclick="copy('test1_2')">Copy</button><br>
             <span class="expected">Expected: 404 or "Document not found"</span>
         </div>
 
         <div class="test-case">
             <strong>Test 1.3:</strong> Access Config File<br>
-            <code id="test1_3">http://localhost:8888/includes/config.php</code>
+            <code id="test1_3"><?= $test_url ?>/includes/config.php</code>
             <button class="copy-btn" onclick="copy('test1_3')">Copy</button><br>
             <span class="expected">Expected: 403 Forbidden or "Direct access not permitted"</span>
         </div>
@@ -96,7 +102,7 @@
 
         <div class="test-case">
             <strong>Test 2.1:</strong> Access Files Without Country Selection<br>
-            <code id="test2_1">http://localhost:8888/en/files.php</code>
+            <code id="test2_1"><?= $test_url ?>/en/files.php</code>
             <button class="copy-btn" onclick="copy('test2_1')">Copy</button><br>
             <span class="expected">Expected: Redirect to index.php</span><br>
             <span class="danger">⚠️ Start in incognito/private mode or clear cookies first!</span>
@@ -104,14 +110,14 @@
 
         <div class="test-case">
             <strong>Test 2.2:</strong> Access Disclaimer Without Country<br>
-            <code id="test2_2">http://localhost:8888/en/disclaimer.php</code>
+            <code id="test2_2"><?= $test_url ?>/en/disclaimer.php</code>
             <button class="copy-btn" onclick="copy('test2_2')">Copy</button><br>
             <span class="expected">Expected: Redirect to index.php</span>
         </div>
 
         <div class="test-case">
             <strong>Test 2.3:</strong> Direct PDF Access<br>
-            <code id="test2_3">http://localhost:8888/assets/pdf/en/document1.pdf</code>
+            <code id="test2_3"><?= $test_url ?>/<?= $test_doc_path ?>/<?= $test_doc ?></code>
             <button class="copy-btn" onclick="copy('test2_3')">Copy</button><br>
             <span class="expected">Expected: Should ideally be blocked (check if accessible)</span>
         </div>
@@ -130,7 +136,7 @@
 
         <div class="test-case">
             <strong>Test 3.2:</strong> XSS in URL Parameter<br>
-            <code id="test3_2">http://localhost:8888/404.php?lang=en&test=&lt;script&gt;alert('XSS')&lt;/script&gt;</code>
+            <code id="test3_2"><?= $test_url ?>/404.php?lang=en&test=&lt;script&gt;alert('XSS')&lt;/script&gt;</code>
             <button class="copy-btn" onclick="copy('test3_2')">Copy</button><br>
             <span class="expected">Expected: No alert, script should be escaped</span>
         </div>
@@ -142,21 +148,21 @@
         <div class="test-case">
             <strong>Test 4.1:</strong> Submit Form Without CSRF Token<br>
             Instructions: Use curl or Postman:<br>
-            <code id="test4_1">curl -X POST http://localhost:8888/index.php -d "country=EU"</code>
+            <code id="test4_1">curl -X POST <?= $test_url ?>/index.php -d "country=EU"</code>
             <button class="copy-btn" onclick="copy('test4_1')">Copy</button><br>
             <span class="expected">Expected: "Invalid request" error</span>
         </div>
 
         <div class="test-case">
             <strong>Test 4.2:</strong> Submit Form With Invalid CSRF Token<br>
-            <code id="test4_2">curl -X POST http://localhost:8888/index.php -d "country=EU&csrf_token=fake_token_12345"</code>
+            <code id="test4_2">curl -X POST <?= $test_url ?>/index.php -d "country=EU&csrf_token=fake_token_12345"</code>
             <button class="copy-btn" onclick="copy('test4_2')">Copy</button><br>
             <span class="expected">Expected: "Invalid request" error</span>
         </div>
 
         <div class="test-case">
             <strong>Test 4.3:</strong> Submit Disclaimer Without CSRF Token<br>
-            <code id="test4_3">curl -X POST http://localhost:8888/en/disclaimer.php -d "action=agree"</code>
+            <code id="test4_3">curl -X POST <?= $test_url ?>/en/disclaimer.php -d "action=agree"</code>
             <button class="copy-btn" onclick="copy('test4_3')">Copy</button><br>
             <span class="expected">Expected: "Invalid request" error</span>
         </div>
@@ -175,14 +181,14 @@
 
         <div class="test-case">
             <strong>Test 5.2:</strong> SQL Injection via URL<br>
-            <code id="test5_2">http://localhost:8888/download.php?id=1' OR '1'='1&lang=en</code>
+            <code id="test5_2"><?= $test_url ?>/download.php?id=1' OR '1'='1&lang=en</code>
             <button class="copy-btn" onclick="copy('test5_2')">Copy</button><br>
             <span class="expected">Expected: 404 or error, no SQL error messages</span>
         </div>
 
         <div class="test-case">
             <strong>Test 5.3:</strong> SQL Injection - UNION Attack<br>
-            <code id="test5_3">http://localhost:8888/download.php?id=1' UNION SELECT NULL--&lang=en</code>
+            <code id="test5_3"><?= $test_url ?>/download.php?id=1' UNION SELECT NULL--&lang=en</code>
             <button class="copy-btn" onclick="copy('test5_3')">Copy</button><br>
             <span class="expected">Expected: 404 or error, no database info leaked</span>
         </div>
@@ -210,7 +216,7 @@
         <div class="test-case">
             <strong>Test 6.3:</strong> Session Persistence After Logout<br>
             Instructions: Select country, then clear session manually:<br>
-            <code id="test6_3">// After selecting country, try: http://localhost:8888/en/files.php in new incognito window</code>
+            <code id="test6_3">// After selecting country, try: <?= $test_url ?>/en/files.php in new incognito window</code>
             <button class="copy-btn" onclick="copy('test6_3')">Copy</button><br>
             <span class="expected">Expected: Should redirect to index.php (session not shared)</span>
         </div>
@@ -221,28 +227,28 @@
 
         <div class="test-case">
             <strong>Test 7.1:</strong> Download Non-Existent File<br>
-            <code id="test7_1">http://localhost:8888/download.php?id=nonexistent_file&lang=en</code>
+            <code id="test7_1"><?= $test_url ?>/download.php?id=nonexistent_file&lang=en</code>
             <button class="copy-btn" onclick="copy('test7_1')">Copy</button><br>
             <span class="expected">Expected: 404 "Document not found"</span>
         </div>
 
         <div class="test-case">
             <strong>Test 7.2:</strong> Download Without Language Parameter<br>
-            <code id="test7_2">http://localhost:8888/download.php?id=doc1</code>
+            <code id="test7_2"><?= $test_url ?>/download.php?id=<?= $test_id ?></code>
             <button class="copy-btn" onclick="copy('test7_2')">Copy</button><br>
             <span class="expected">Expected: Error or 404</span>
         </div>
 
         <div class="test-case">
             <strong>Test 7.3:</strong> Download With Invalid Language<br>
-            <code id="test7_3">http://localhost:8888/download.php?id=doc1&lang=fr</code>
+            <code id="test7_3"><?= $test_url ?>/download.php?id=<?= $test_id ?>&lang=fr</code>
             <button class="copy-btn" onclick="copy('test7_3')">Copy</button><br>
             <span class="expected">Expected: Error or redirect</span>
         </div>
 
         <div class="test-case">
             <strong>Test 7.4:</strong> Null Byte Injection<br>
-            <code id="test7_4">http://localhost:8888/download.php?id=doc1%00.txt&lang=en</code>
+            <code id="test7_4"><?= $test_url ?>/download.php?id=<?= $test_id ?>%00.txt&lang=en</code>
             <button class="copy-btn" onclick="copy('test7_4')">Copy</button><br>
             <span class="expected">Expected: 404 or blocked</span>
         </div>
@@ -253,35 +259,35 @@
 
         <div class="test-case">
             <strong>Test 8.1:</strong> Access Log Files<br>
-            <code id="test8_1">http://localhost:8888/logs/access.log</code>
+            <code id="test8_1"><?= $test_url ?>/logs/access.log</code>
             <button class="copy-btn" onclick="copy('test8_1')">Copy</button><br>
             <span class="expected">Expected: 403 Forbidden</span>
         </div>
 
         <div class="test-case">
             <strong>Test 8.2:</strong> Access .htaccess File<br>
-            <code id="test8_2">http://localhost:8888/.htaccess</code>
+            <code id="test8_2"><?= $test_url ?>/.htaccess</code>
             <button class="copy-btn" onclick="copy('test8_2')">Copy</button><br>
             <span class="expected">Expected: 403 Forbidden</span>
         </div>
 
         <div class="test-case">
             <strong>Test 8.3:</strong> Access .git Directory<br>
-            <code id="test8_3">http://localhost:8888/.git/config</code>
+            <code id="test8_3"><?= $test_url ?>/.git/config</code>
             <button class="copy-btn" onclick="copy('test8_3')">Copy</button><br>
             <span class="expected">Expected: 404 or 403 (should not exist in production)</span>
         </div>
 
         <div class="test-case">
             <strong>Test 8.4:</strong> Directory Listing<br>
-            <code id="test8_4">http://localhost:8888/assets/</code>
+            <code id="test8_4"><?= $test_url ?>/assets/</code>
             <button class="copy-btn" onclick="copy('test8_4')">Copy</button><br>
             <span class="expected">Expected: 403 Forbidden (no directory listing)</span>
         </div>
 
         <div class="test-case">
             <strong>Test 8.5:</strong> PHP Info Exposure<br>
-            <code id="test8_5">http://localhost:8888/phpinfo.php</code>
+            <code id="test8_5"><?= $test_url ?>/phpinfo.php</code>
             <button class="copy-btn" onclick="copy('test8_5')">Copy</button><br>
             <span class="expected">Expected: 404 (file should not exist)</span>
         </div>
@@ -295,7 +301,7 @@
             Instructions:
             1. Select "AU-NZ" from country dropdown
             2. You should see no_access.php
-            3. Then try to access: <code id="test9_1">http://localhost:8888/en/files.php</code>
+            3. Then try to access: <code id="test9_1">/en/files.php</code>
             <button class="copy-btn" onclick="copy('test9_1')">Copy</button><br>
             <span class="expected">Expected: Redirect to no_access.php</span>
         </div>
@@ -306,7 +312,7 @@
             1. Select "EU" from country dropdown
             2. You'll see disclaimer page
             3. Click "I Disagree"
-            4. Try to access files directly: <code id="test9_2">http://localhost:8888/en/files.php</code>
+            4. Try to access files directly: <code id="test9_2">/en/files.php</code>
             <button class="copy-btn" onclick="copy('test9_2')">Copy</button><br>
             <span class="expected">Expected: Redirect to disclaimer or index</span>
         </div>
@@ -323,7 +329,7 @@
 
         <div class="test-case">
             <strong>Test 9.4:</strong> Direct Access to German Disclaimer<br>
-            <code id="test9_4">http://localhost:8888/de/disclaimer.php</code>
+            <code id="test9_4">/de/disclaimer.php</code>
             <button class="copy-btn" onclick="copy('test9_4')">Copy</button><br>
             <span class="expected">Expected: Redirect to index if no country selected</span>
         </div>
@@ -334,28 +340,28 @@
 
         <div class="test-case">
             <strong>Test 10.1:</strong> OPTIONS Method<br>
-            <code id="test10_1">curl -X OPTIONS http://localhost:8888/index.php -v</code>
+            <code id="test10_1">curl -X OPTIONS /index.php -v</code>
             <button class="copy-btn" onclick="copy('test10_1')">Copy</button><br>
             <span class="expected">Expected: Check what methods are allowed</span>
         </div>
 
         <div class="test-case">
             <strong>Test 10.2:</strong> PUT Method (Should Not Be Allowed)<br>
-            <code id="test10_2">curl -X PUT http://localhost:8888/index.php -d "test=data"</code>
+            <code id="test10_2">curl -X PUT /index.php -d "test=data"</code>
             <button class="copy-btn" onclick="copy('test10_2')">Copy</button><br>
             <span class="expected">Expected: 405 Method Not Allowed or ignored</span>
         </div>
 
         <div class="test-case">
             <strong>Test 10.3:</strong> DELETE Method (Should Not Be Allowed)<br>
-            <code id="test10_3">curl -X DELETE http://localhost:8888/assets/pdf/en/document1.pdf</code>
+            <code id="test10_3">curl -X DELETE <?= $test_url ?>/<?= $test_doc_path ?>/<?= $test_doc ?></code>
             <button class="copy-btn" onclick="copy('test10_3')">Copy</button><br>
             <span class="expected">Expected: 405 Method Not Allowed or 403</span>
         </div>
 
         <div class="test-case">
             <strong>Test 10.4:</strong> Check Security Headers<br>
-            <code id="test10_4">curl -I http://localhost:8888/index.php</code>
+            <code id="test10_4">curl -I <?= $test_url ?>/index.php</code>
             <button class="copy-btn" onclick="copy('test10_4')">Copy</button><br>
             <span class="expected">Expected: Should see X-Content-Type-Options, X-Frame-Options, X-XSS-Protection</span>
         </div>
@@ -366,28 +372,28 @@
 
         <div class="test-case">
             <strong>Test 11.1:</strong> Double Encoding<br>
-            <code id="test11_1">http://localhost:8888/download.php?id=%252e%252e%252f%252e%252e%252fetc%252fpasswd&lang=en</code>
+            <code id="test11_1"><?= $test_url ?>/download.php?id=%252e%252e%252f%252e%252e%252fetc%252fpasswd&lang=en</code>
             <button class="copy-btn" onclick="copy('test11_1')">Copy</button><br>
             <span class="expected">Expected: 404 blocked</span>
         </div>
 
         <div class="test-case">
             <strong>Test 11.2:</strong> Unicode Bypass<br>
-            <code id="test11_2">http://localhost:8888/download.php?id=..%c0%af..%c0%af..%c0%afetc%c0%afpasswd&lang=en</code>
+            <code id="test11_2"><?= $test_url ?>/download.php?id=..%c0%af..%c0%af..%c0%afetc%c0%afpasswd&lang=en</code>
             <button class="copy-btn" onclick="copy('test11_2')">Copy</button><br>
             <span class="expected">Expected: 404 blocked</span>
         </div>
 
         <div class="test-case">
             <strong>Test 11.3:</strong> Windows Path Traversal<br>
-            <code id="test11_3">http://localhost:8888/download.php?id=..\..\..\windows\system32\config\sam&lang=en</code>
+            <code id="test11_3"><?= $test_url ?>/download.php?id=..\..\..\windows\system32\config\sam&lang=en</code>
             <button class="copy-btn" onclick="copy('test11_3')">Copy</button><br>
             <span class="expected">Expected: 404 blocked</span>
         </div>
 
         <div class="test-case">
             <strong>Test 11.4:</strong> Absolute Path<br>
-            <code id="test11_4">http://localhost:8888/download.php?id=/etc/passwd&lang=en</code>
+            <code id="test11_4"><?= $test_url ?>/download.php?id=/etc/passwd&lang=en</code>
             <button class="copy-btn" onclick="copy('test11_4')">Copy</button><br>
             <span class="expected">Expected: 404 blocked</span>
         </div>
@@ -398,28 +404,28 @@
 
         <div class="test-case">
             <strong>Test 12.1:</strong> Very Long Input (Buffer Overflow)<br>
-            <code id="test12_1">http://localhost:8888/download.php?id=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...&lang=en</code>
+            <code id="test12_1"><?= $test_url ?>/download.php?id=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...&lang=en</code>
             <button class="copy-btn" onclick="copy('test12_1')">Copy</button><br>
             <span class="expected">Expected: Should handle gracefully, not crash</span>
         </div>
 
         <div class="test-case">
             <strong>Test 12.2:</strong> Special Characters in ID<br>
-            <code id="test12_2">http://localhost:8888/download.php?id=doc1';DROP TABLE users;--&lang=en</code>
+            <code id="test12_2"><?= $test_url ?>/download.php?id=<?= $test_id ?>';DROP TABLE users;--&lang=en</code>
             <button class="copy-btn" onclick="copy('test12_2')">Copy</button><br>
             <span class="expected">Expected: Should be escaped/rejected safely</span>
         </div>
 
         <div class="test-case">
             <strong>Test 12.3:</strong> Null Bytes<br>
-            <code id="test12_3">http://localhost:8888/download.php?id=doc1%00&lang=en</code>
+            <code id="test12_3"><?= $test_url ?>/download.php?id=<?= $test_id ?>%00&lang=en</code>
             <button class="copy-btn" onclick="copy('test12_3')">Copy</button><br>
             <span class="expected">Expected: Should be rejected or handled safely</span>
         </div>
 
         <div class="test-case">
             <strong>Test 12.4:</strong> Multiple Parameters<br>
-            <code id="test12_4">http://localhost:8888/download.php?id=doc1&id=../../etc/passwd&lang=en</code>
+            <code id="test12_4"><?= $test_url ?>/download.php?id=<?= $test_id ?>&id=../../etc/passwd&lang=en</code>
             <button class="copy-btn" onclick="copy('test12_4')">Copy</button><br>
             <span class="expected">Expected: Should use only first parameter or reject</span>
         </div>
@@ -431,16 +437,18 @@
         <div class="test-case">
             <strong>Test 13.1:</strong> Document ID Enumeration<br>
             Instructions: Try sequential IDs to see if you can guess document names:<br>
-            <code id="test13_1">http://localhost:8888/download.php?id=doc1&lang=en
-http://localhost:8888/download.php?id=doc2&lang=en
-http://localhost:8888/download.php?id=doc3&lang=en</code>
+            <code id="test13_1">
+                <?= $test_url ?>/download.php?id=<?= $test_id ?>&lang=en
+                <?= $test_url ?>/download.php?id=doc2&lang=en
+                <?= $test_url ?>/download.php?id=doc3&lang=en
+            </code>
             <button class="copy-btn" onclick="copy('test13_1')">Copy</button><br>
             <span class="expected">Expected: Check if error messages reveal document existence</span>
         </div>
 
         <div class="test-case">
             <strong>Test 13.2:</strong> File Extension Guessing<br>
-            <code id="test13_2">http://localhost:8888/download.php?id=doc1.pdf&lang=en</code>
+            <code id="test13_2"><?= $test_url ?>/download.php?id=<?= $test_id ?>.pdf&lang=en</code>
             <button class="copy-btn" onclick="copy('test13_2')">Copy</button><br>
             <span class="expected">Expected: Should not reveal file structure</span>
         </div>
@@ -452,12 +460,14 @@ http://localhost:8888/download.php?id=doc3&lang=en</code>
         <div class="test-case">
             <strong>Test 14.1:</strong> Rapid Form Submissions<br>
             Instructions: Open DevTools Console and run:<br>
-            <code id="test14_1">for(let i=0; i<100; i++) {
-    fetch('/index.php', {
-        method: 'POST',
-        body: 'country=EU&csrf_token=test'
-    });
-}</code>
+            <code id="test14_1">
+                for(let i=0; i<100; i++) {
+                    fetch('/index.php', {
+                        method: 'POST',
+                        body: 'country=EU&csrf_token=test'
+                    });
+                }
+            </code>
             <button class="copy-btn" onclick="copy('test14_1')">Copy</button><br>
             <span class="expected">Expected: Check if server handles load (rate limiting would be ideal)</span>
         </div>
@@ -465,7 +475,7 @@ http://localhost:8888/download.php?id=doc3&lang=en</code>
         <div class="test-case">
             <strong>Test 14.2:</strong> Rapid Downloads<br>
             Instructions: Bash script to test:<br>
-            <code id="test14_2">for i in {1..50}; do curl http://localhost:8888/download.php?id=doc1&lang=en & done</code>
+            <code id="test14_2">for i in {1..50}; do curl <?= $test_url ?>/download.php?id=<?= $test_id ?>&lang=en & done</code>
             <button class="copy-btn" onclick="copy('test14_2')">Copy</button><br>
             <span class="expected">Expected: Server should handle concurrent requests</span>
         </div>

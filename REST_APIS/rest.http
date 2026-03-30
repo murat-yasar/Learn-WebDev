@@ -1,6 +1,17 @@
 # GET https://jsonplaceholder.typicode.com/posts
-# HEAD https://official-joke-api.appspot.com/jokes/random
+# GET https://official-joke-api.appspot.com/jokes/random
 
 # HEAD http://api.restful-api.dev/objects
-# HEAD https://www.lase-peco.com/wp-content/uploads/2026/02/PeCo_Web-Cloud-Entwickler_2026.pdf
+# HEAD https://jsonplaceholder.typicode.com/posts
 
+# POST https://jsonplaceholder.typicode.com/posts
+# Authorization: MRT
+# Content-Type: application/json
+# {
+#   "type": "general",
+#   "setup": "Hi there",
+#   "punchline": "What's up body",
+#   "id": 122
+# }
+
+OPTIONS https://official-joke-api.appspot.com/jokes/random

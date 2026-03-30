@@ -8,10 +8,13 @@
 # Authorization: MRT
 # Content-Type: application/json
 # {
-#   "type": "general",
-#   "setup": "Hi there",
-#   "punchline": "What's up body",
-#   "id": 122
-# }
+#     "userId": 11,
+#     "id": 101,
+#     "title": "My silly title",
+#     "body": "some dummy text for test"
+#   }
 
-OPTIONS https://official-joke-api.appspot.com/jokes/random
+OPTIONS https://jsonplaceholder.typicode.com/posts
+
+# DELETE https://jsonplaceholder.typicode.com/posts/1
+# GET https://jsonplaceholder.typicode.com/posts/1

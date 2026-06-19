@@ -1,0 +1,36 @@
+### Laravel Core & Build Artifacts ###
+/public/build
+/public/fonts-manifest.dev.json
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+*.log
+.phpunit.result.cache
+/.phpunit.cache
+
+### Environment & Security ###
+.env
+.env.backup
+.env.production
+/auth.json
+
+### Dependency Directories ###
+/node_modules
+/vendor
+
+### IDEs, Editors, & Tools ###
+/.codex
+/.cursor/
+/.idea
+/.nova
+/.vscode
+/.zed
+.phpactor.json
+_ide_helper.php
+Homestead.json
+Homestead.yaml
+
+### OS Generated Files ###
+.DS_Store
+Thumbs.db

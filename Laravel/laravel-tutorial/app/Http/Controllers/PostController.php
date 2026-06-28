@@ -10,7 +10,7 @@ use App\Models\User;
 class PostController extends Controller
 {
     // Display all posts
-    public function index()
+    public function index(Request $request)
     {
         // [Code.1]
         // $posts = DB::table('posts')->get();
@@ -26,8 +26,22 @@ class PostController extends Controller
         // return $profile;
 
         // [Code.4]
-        $user = User::with('profile')->find(1);
-        return $user->profile;
+        // $user = User::with('profile')->find(1);
+        // return $user->profile;
+
+        // [Code.5]
+        // $user = User::with('posts')->find(1);
+        // foreach($user->posts as $post)
+        // {
+        //     $post->title;
+        // }
+
+        // [Code.6]
+        $user = User::find(1);
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $user->posts()->save($post);
     }
 
 

@@ -17,21 +17,7 @@ Route::get('/', function () {
 
 Route::get('test', [TestController::class, 'index']);
 
-Route::get('posts', [PostController::class, 'getPosts']);
+// Posts
+Route::get('posts', [PostController::class, 'index']);
+Route::get('posts/{id?}', [PostController::class, 'show']);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('users', [UserController::class, 'getUsers']);

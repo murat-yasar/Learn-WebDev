@@ -12,6 +12,8 @@
             <h2>{{ $post->title }}</h2>
             <p>{{ $post->body }}</p>
             <a href="{{ url('edit_post' . '/' . $post->id) }}">Edit</a>
+            <a href="{{ url('delete_post' . '/' . $post->id) }}">Delete</a>
+            <hr>
         @endforeach
     </body>
 </html>

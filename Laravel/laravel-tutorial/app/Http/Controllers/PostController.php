@@ -56,4 +56,11 @@ class PostController extends Controller
 
         return "The post $id is updated!";
     }
+
+    public function delete($id)
+    {
+        DB::table('posts')->where('id', $id)->delete();
+
+        return "The post is deleted!";
+    }
 }

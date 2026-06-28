@@ -16,7 +16,23 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = DB::table('posts')->where('id', $id)->get();
+        $post = DB::table('posts')->where('id', $id)->first();
         return $post;
+    }
+
+    public function store(Request $request)
+    {
+        DB::table('posts')->insert([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+
+        $posts = DB::table('posts')->get();
+        return $posts;
+    }
+
+    public function create()
+    {
+        return view('create');
     }
 }

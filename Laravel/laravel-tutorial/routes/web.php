@@ -4,20 +4,16 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/test', function () {
-//     return view('test');
-// });
-
-
+// TEST
 Route::get('test', [TestController::class, 'index']);
 
-// Posts
+// POSTS
 Route::get('posts', [PostController::class, 'index']);
+Route::get('posts/create', [PostController::class, 'create']);
+Route::post('posts', [PostController::class, 'store']);
 Route::get('posts/{id?}', [PostController::class, 'show']);
-

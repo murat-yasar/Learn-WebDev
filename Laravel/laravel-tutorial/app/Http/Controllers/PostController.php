@@ -5,16 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
     // Display all posts
     public function index()
     {
+        // [Code.1]
         // $posts = DB::table('posts')->get();
-        $posts = Post::all();
+        // return view('posts', compact('posts'));
 
-        return view('posts', compact('posts'));
+        // [Code.2]
+        // $posts = Post::all();
+        // return view('posts', compact('posts'));
+
+        // [Code.3]
+        // $user = User::find(1);
+        // $profile = $user->profile;
+        // return $profile;
+
+        // [Code.4]
+        $user = User::with('profile')->find(1);
+        return $user->profile;
     }
 
 

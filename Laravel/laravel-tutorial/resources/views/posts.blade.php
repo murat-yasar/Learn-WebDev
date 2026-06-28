@@ -11,6 +11,7 @@
         @foreach ( $posts as $post)
             <h2>{{ $post->title }}</h2>
             <p>{{ $post->body }}</p>
+            <a href="{{ url('edit_post' . '/' . $post->id) }}">Edit</a>
         @endforeach
     </body>
 </html>

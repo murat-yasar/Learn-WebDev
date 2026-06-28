@@ -8,6 +8,9 @@
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
         <h1 class="mb-1 font-medium">POSTS</h1>
 
+        <a href="{{ url('posts/create') }}">Add a New Post</a>
+        <br><br>
+
         @foreach ( $posts as $post)
             <h2>{{ $post->title }}</h2>
             <p>{{ $post->body }}</p>

@@ -9,5 +9,5 @@
     <input type="text" name="body" value="{{ $post->body }}">
     <br>
 
-    <button type="submit">Edit</button>
+    <button type="submit">Update</button>
 </form>

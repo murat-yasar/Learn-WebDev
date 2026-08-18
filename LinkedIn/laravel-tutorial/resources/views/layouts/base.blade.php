@@ -11,7 +11,14 @@
 <body>
     <nav class="bg-gray-100 px-8 py-4 text-gray-700 flex items-center justify-between">
         <span class="font-bold text-2xl">Brand</span>
-        <span>Hello @yield('name')</span>
+        <span>Hello
+            @if ('name' === "Murat")
+                @yield('name')
+            @else
+                Guest
+            @endif
+
+        </span>
     </nav>
 
     <section class="p-12 mx-auto max-w-6xl text-gray-800">

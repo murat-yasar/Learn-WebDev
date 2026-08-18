@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang='EN'>
-<head>
-<meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>
-<link rel='stylesheet' href='css/styles.css'></link>
-<title>Home</title>
+@extends('layouts.base')
 
-</head>
-<body>
-    <h1> Hello
-        @if ($name === "Murat")
-            {{ $name}}
-        @else
-            World!
-        @endif
-    </h1>
+@section('name', "Murat")
 
-
-<script src='js/script.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'></script>
-</body>
-</html>
+@section('content')
+<h1 class="text-4xl font-bold">Home</h1>
+<p class="mt-4 text-lg">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore veniam dolor voluptas quam itaque! Beatae nulla non est earum delectus. Nostrum sit ipsum neque voluptates culpa quae consectetur perspiciatis laboriosam?</p>
+@endsection

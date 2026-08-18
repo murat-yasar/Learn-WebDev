@@ -11,18 +11,11 @@
 <body>
     <nav class="bg-gray-100 px-8 py-4 text-gray-700 flex items-center justify-between">
         <span class="font-bold text-2xl">Brand</span>
-        <span>Hello
-            @if ('name' === "Murat")
-                @yield('name')
-            @else
-                Guest
-            @endif
-
-        </span>
+        <span>Hello {{ $name }}</span>
     </nav>
 
     <section class="p-12 mx-auto max-w-6xl text-gray-800">
-        @yield('content')
+    {{ $content }}
     </section>
 
 <script src='js/app.js'></script>
